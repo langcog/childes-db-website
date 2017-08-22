@@ -42,6 +42,7 @@
 		
 		<!--start: Container -->
 		<div class="container">
+
 			
 			<!--start: Row -->
 			<div class="row">
@@ -66,7 +67,7 @@
 			          		</a>
 			          		<div class="nav-collapse collapse">
 			            		<ul class="nav">
-			              			<li><a href="analyses.html">Visualizations</a></li>
+			              			<li><a href="analyses.html">Analyses</a></li>
 			            			<li class="active"><a href="api.html">API Tutorial</a></li>
 			            			<li><a href="docs.html">Documentation</a></li>
 			              			<li><a href="about.html">About</a></li>
@@ -96,7 +97,7 @@
 			<!-- start: Container -->
 			<div class="container">
 
-				<h2><i class="ico-list ico-white"></i>API Tutorial</h2>
+				<h2><i class="ico-stats ico-white"></i>API Tutorial</h2>
 
 			</div>
 			<!-- end: Container  -->
@@ -106,45 +107,54 @@
 	</div>
 	<!-- end: Page Title -->
 	
-	<!--start: Wrapper-->
-	<div id="wrapper">
+
 				
-		<!--start: Container -->
-    	<div class="container">
-	
-			<!--start: Row -->
-	    	<div class="row">
+	<div class="container">
 		
-				<div class="span10">
-					
-					<!-- start: About the API -->
-					
-                        
-                        <!-- start: Tabs -->
-						<div class="title"><h3>API Documentation</h3></div>
 
-						<ul class="tabs-nav">
-							<li class="active"><a href="#tab1_bis"><i class="mini-ico-glass"></i> About the IPA</a></li>
-							<li><a href="#tab2_bis"><i class="mini-ico-list"></i> Using childes-db via SQL </a></li>
-							<li><a href="#tab3_bis"><i class="mini-ico-pencil"></i> Using childes-db via R </a></li>
-						</ul>
+		<table width=100% border=0>
+			<tr>	
+				<td width=200 valign="top">
+					<p><a href="#usingR">Accessing childes-db using R</a></p>
+						<ol>
+							<li><a href="#getlibrary">Getting and installing the childes-db R library</a></li>
+							<li><a href="#r_query1">Query 1</a></li>
+							<li><a href="#r_query2">Query 2</a></li>
+							<li><a href="#r_query3">Query 3</a></li>
+							<li><a href="#r_query4">Query 4</a></li>
+						</ol><br>
 
-						<div class="tabs-container">
-							<div class="tab-content" id="tab1_bis">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-                            
-                            <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre></div>
-                                <p>
-                                    <code>{r, echo=FALSE}</code></p>
-                               
-                                <pre><code>##      speed           dist       
+					<p><a href="#usingSQL">Accessing childes-db using SQL</a></p>
+						<ol>
+							<li><a href="#connectSQL">Connecting to the SQL database</a></li>
+							<li><a href="#sql_query1">Query 1</a></li>
+							<li><a href="#sql_query2">Query 2</a></li>
+							<li><a href="#sql_query3">Query 3</a></li>
+							<li><a href="#sql_query4">Query 4</a></li>
+						</ol>
+				</td>
+
+				<td>
+					<p><a id="usingR">Accessing childes-db using R</a></p>
+
+					<p><a id="getlibrary">Getting and installing the childes-db R library</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
+                    
+                    
+                    <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre></div> 
+                    
+                    <pre><code>##      speed           dist       
 ##  Min.   : 4.0   Min.   :  2.00  
 ##  1st Qu.:12.0   1st Qu.: 26.00  
 ##  Median :15.0   Median : 36.00  
 ##  Mean   :15.4   Mean   : 42.98  
 ##  3rd Qu.:19.0   3rd Qu.: 56.00  
 ##  Max.   :25.0   Max.   :120.00</code></pre>
-                                
-                                <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Setting an if-statement to false, will prevent the evaluation of this part.</span>
+
+					<p><a id="r_query1">Query 1</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
+                    
+                    <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Setting an if-statement to false, will prevent the evaluation of this part.</span>
 if(<span class="ot">FALSE</span>){
   <span class="co"># run this code on the server:</span>
   model &lt;-<span class="st"> </span><span class="kw">gam</span>(Y ~<span class="st"> </span><span class="kw">s</span>(Time), <span class="dt">data=</span>dat)
@@ -155,31 +165,43 @@ if(<span class="ot">FALSE</span>){
 <span class="kw">load</span>(<span class="st">&quot;Models/model.rda&quot;</span>)
 <span class="co"># ... and continue with your script.</span></code></pre></div>
 
-                               
-                                
-                            </div>
-							<div class="tab-content" id="tab2_bis">
-                            
-                            <iframe src="http://langcog.github.io/wordbankr/"  style="border:none" height="400" width="800">
-</iframe>
-                            </div>
-							<div class="tab-content" id="tab3_bis">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</div>
-						</div>
-            
-					<!-- end: Using childes-db through R -->					
-					
-				</div>	
-				
-				
-				
-			</div>
-			<!--end: Row-->
-	
-		</div>
-		<!--end: Container-->
+					<p><a id="r_query2">Query 2</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
 
+					<p><a id="r_query3">Query 3</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
+
+					<p><a id="r_query4">Query 4</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
+					<br>
+
+					<p><a id="usingSQL">Accessing childes-db using SQL</a></p>
+
+					<p><a id="connectSQL">Connecting to the SQL database</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
+
+					<p><a id="sql_query1">Query 1</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
+
+					<p><a id="sql_query2">Query 2</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
+
+					<p><a id="sql_query3">Query 3</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
+
+					<p><a id="sql_query4">Query 4</a></p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
+
+				</td>
+			</tr>
+								
+			
+		</table>
+
+		</div>
 	</div>
-	<!-- end: Wrapper  -->			
+				
+		
 
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/bootstrap.js"></script>
