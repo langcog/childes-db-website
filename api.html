@@ -115,7 +115,7 @@
 			<!--start: Row -->
 	    	<div class="row">
 		
-				<div class="span8">
+				<div class="span10">
 					
 					<!-- start: About the API -->
 					
@@ -130,8 +130,39 @@
 						</ul>
 
 						<div class="tabs-container">
-							<div class="tab-content" id="tab1_bis">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</div>
-							<div class="tab-content" id="tab2_bis">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</div>
+							<div class="tab-content" id="tab1_bis">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                            
+                            <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre></div>
+                                <p>
+                                    <code>{r, echo=FALSE}</code></p>
+                               
+                                <pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+                                
+                                <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Setting an if-statement to false, will prevent the evaluation of this part.</span>
+if(<span class="ot">FALSE</span>){
+  <span class="co"># run this code on the server:</span>
+  model &lt;-<span class="st"> </span><span class="kw">gam</span>(Y ~<span class="st"> </span><span class="kw">s</span>(Time), <span class="dt">data=</span>dat)
+  <span class="kw">save</span>(model, <span class="dt">file=</span><span class="st">&quot;Models/model.rda&quot;</span>, <span class="dt">compress=</span><span class="st">&quot;xz&quot;</span>)
+}
+<span class="co"># Now download the model, and store it in the directory Models</span>
+<span class="co"># Load the model:</span>
+<span class="kw">load</span>(<span class="st">&quot;Models/model.rda&quot;</span>)
+<span class="co"># ... and continue with your script.</span></code></pre></div>
+
+                               
+                                
+                            </div>
+							<div class="tab-content" id="tab2_bis">
+                            
+                            <iframe src="http://langcog.github.io/wordbankr/"  style="border:none" height="400" width="800">
+</iframe>
+                            </div>
 							<div class="tab-content" id="tab3_bis">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</div>
 						</div>
             
