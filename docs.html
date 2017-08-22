@@ -66,9 +66,9 @@
 			          		</a>
 			          		<div class="nav-collapse collapse">
 			            		<ul class="nav">
-			              			<li><a href="analyses.html">Analyses</a></li>
-			            			<li><a href="api.html">API Tutorial</a></li>
-			            			<li class="active"><a href="docs.html">Documentation</a></li>
+			              			<li><a href="docs.html">Documentation</a></li>
+									<li><a href="tutorial.html">Tutorial</a></li>
+									<li><a href="analyses.html">Analyses</a></li>
 			              			<li><a href="about.html">About</a></li>
 			              			<li><a href="faq.html">FAQ</a></li>
 			            		</ul>
@@ -115,19 +115,19 @@
 			<!--start: Row -->
 	    	<div class="row">
 		
-				<div class="span8">
+				<div class="span12">
 					
-					<!-- start: About CHILDES -->
-					<div id="about">
-						<div class="title"><h3>Documentation</h3></div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-						</p>
-					</div>	
-					<!-- end: About CHILDES -->
+						<ul class="tabs-nav">
+							<li class="active"><a href="#tab1_bis"><i class="mini-ico-glass"></i> About CHILDES</a></li>
+							<li><a href="#tab2_bis"><i class="mini-ico-list"></i> childes-db </a></li>
+							<li><a href="#tab3_bis"><i class="mini-ico-pencil"></i> API </a></li>
+						</ul>
 
-
-					<!-- end: About childes-db -->					
+						<div class="tabs-container">
+							<div class="tab-content" id="tab1_bis">Here is the information about the CHILDES project.</div>
+							<div class="tab-content" id="tab2_bis">Here is the information about the childes-db (table definitions, sql access, etc.</div>
+							<div class="tab-content" id="tab3_bis">here is the information about how to access childes-db via R and Python</div>
+						</div>				
 					
 				</div>	
 				
@@ -142,7 +142,13 @@
 	</div>
 	<!-- end: Wrapper  -->			
 
-
+<script src="js/jquery-1.8.2.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/flexslider.js"></script>
+<script src="js/carousel.js"></script>
+<script src="js/jquery.cslider.js"></script>
+<script src="js/slider.js"></script>
+<script def src="js/custom.js"></script>
 
 </body>
 </html>	
