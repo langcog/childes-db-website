@@ -106,101 +106,10 @@
 
 	</div>
 	<!-- end: Page Title -->
-	
 
-				
-	<div class="container">
-		
 
-		<table width=100% border=0>
-			<tr>	
-				<td width=200 valign="top">
-					<p><a href="#usingR">Accessing childes-db using R</a></p>
-						<ol>
-							<li><a href="#getlibrary">Getting and installing the childes-db R library</a></li>
-							<li><a href="#r_query1">Query 1</a></li>
-							<li><a href="#r_query2">Query 2</a></li>
-							<li><a href="#r_query3">Query 3</a></li>
-							<li><a href="#r_query4">Query 4</a></li>
-						</ol><br>
-
-					<p><a href="#usingSQL">Accessing childes-db using SQL</a></p>
-						<ol>
-							<li><a href="#connectSQL">Connecting to the SQL database</a></li>
-							<li><a href="#sql_query1">Query 1</a></li>
-							<li><a href="#sql_query2">Query 2</a></li>
-							<li><a href="#sql_query3">Query 3</a></li>
-							<li><a href="#sql_query4">Query 4</a></li>
-						</ol>
-				</td>
-
-				<td>
-					<p><a id="usingR">Accessing childes-db using R</a></p>
-
-					<p><a id="getlibrary">Getting and installing the childes-db R library</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-                    
-                    
-                    <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre></div> 
-                    
-                    <pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
-
-					<p><a id="r_query1">Query 1</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-                    
-                    <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Setting an if-statement to false, will prevent the evaluation of this part.</span>
-if(<span class="ot">FALSE</span>){
-  <span class="co"># run this code on the server:</span>
-  model &lt;-<span class="st"> </span><span class="kw">gam</span>(Y ~<span class="st"> </span><span class="kw">s</span>(Time), <span class="dt">data=</span>dat)
-  <span class="kw">save</span>(model, <span class="dt">file=</span><span class="st">&quot;Models/model.rda&quot;</span>, <span class="dt">compress=</span><span class="st">&quot;xz&quot;</span>)
-}
-<span class="co"># Now download the model, and store it in the directory Models</span>
-<span class="co"># Load the model:</span>
-<span class="kw">load</span>(<span class="st">&quot;Models/model.rda&quot;</span>)
-<span class="co"># ... and continue with your script.</span></code></pre></div>
-
-					<p><a id="r_query2">Query 2</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-
-					<p><a id="r_query3">Query 3</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-
-					<p><a id="r_query4">Query 4</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-					<br>
-
-					<p><a id="usingSQL">Accessing childes-db using SQL</a></p>
-
-					<p><a id="connectSQL">Connecting to the SQL database</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-
-					<p><a id="sql_query1">Query 1</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-
-					<p><a id="sql_query2">Query 2</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-
-					<p><a id="sql_query3">Query 3</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-
-					<p><a id="sql_query4">Query 4</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><br>
-
-				</td>
-			</tr>
-								
-			
-		</table>
-
-		</div>
-	</div>
-				
+	<!-- start: Vignette-->
+	<iframe src="https://langcog.github.io/childesr/articles/access_childes_db.html", style="position: absolute; height: 100%; width: 100%; border: none"></iframe>
 		
 
 <script src="js/jquery-1.8.2.js"></script>
