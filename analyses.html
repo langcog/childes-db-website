@@ -110,22 +110,28 @@
 	<div id="wrapper">
 				
 		<!--start: Container -->
-    	<div class="container">
-	
-			<!--start: Row -->
-	    	<div class="row">
-		
-				<div class="span8">
+    	<div class="span6">
 
-					<iframe style="border:none; width:900px; height:800px" src="https://amsan7.shinyapps.io/childfreq/"></iframe>
-					
-				</div>	
-				
-			</div>
-			<!--end: Row-->
+			<ul class="nav nav-tabs">
+			  <li class="active"><a data-toggle="tab" data-target="#menu1"> Mean Length of Utterance </a></li>
+			  <li><a data-toggle="tab" data-target="#menu2"> Frequency Counts </a></li>
+			  <li><a data-toggle="tab" data-target="#menu3"> Population Viewer </a></li>
+			</ul>
+
+			<div class="tab-content" style="overflow:visible !important;">
+			    <div id="menu1" class="tab-pane fade in active">
+			      <iframe style="border:none; width:1200px; height:800px" src="http://34.212.148.26:3838/mlu/"></iframe>
+			    </div>
+			    <div id="menu2" class="tab-pane">
+			      <iframe style="border:none; width:1200px; height:800px" src="http://34.212.148.26:3838/freq/"></iframe>
+			    </div>
+			    <div id="menu3" class="tab-pane">
+			      <iframe style="border:none; width:1200px; height:800px" src="http://34.212.148.26:3838/pop/"></iframe>
+			    </div>
+			</div> 
 	
 		</div>
-		<!--end: Container-->
+		<!--end: Span6-->
 		
 	</div>
 	<!-- end: Wrapper  -->			
