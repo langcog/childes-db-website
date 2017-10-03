@@ -104,8 +104,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* #Lists
 ================================================== */
-	ul, ol { margin: 0; }
-	ul { list-style: none outside; }
+	ul, ol { margin: 30px; }
+	/*ul { list-style: none outside; }*/
 	ol { list-style: decimal; }
 	ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
 	ul.square { list-style: square outside; }
