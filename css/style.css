@@ -74,7 +74,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Arial" !important;
+	font-family: "Arial";
 	font-weight: normal !important;
 	color: #666;
 	margin: 0;
