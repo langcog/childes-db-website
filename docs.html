@@ -118,6 +118,28 @@
 
 	    		<div class="hero-unit">
 		
+					<h2>
+						Codebase and issue tracking
+					</h2>
+
+					<br/>
+
+					<p>
+						<code>childes-db</code> is all open source and is under active development. If you run into an issue, please let us know by github's issue tracking at the appropriate repository: <br/><br/>
+
+						Website frontend: <a href="http://github.com/langcog/childes-db-website" style="color:#3399f3">http://github.com/langcog/childes-db-website</a> <br/>
+						Interactive applications: <a href="https://github.com/langcog/childes-db-shiny" style="color:#3399f3">https://github.com/langcog/childes-db-shiny</a> <br/>
+						R package: <a href="https://github.com/langcog/childesr" style="color:#3399f3">https://github.com/langcog/childesr</a>
+					</p>
+
+					<br/>
+
+					<h2>
+						Backend and CHAT format treatment
+					</h2>
+
+					<br/>
+
 					<p>
 						The <code>childes-db</code> project stores CHILDES data in a MySQL relational database. The original CHAT files were converted to XML via chatter, a cross-platform application provided by TalkBank. The XML files were then parsed using the Python xml library and subsequently imported into a MySQL database through Django. The annotations and markers from the original CHAT files that were preserved in <code>childes-db</code> can be found in the table below:
 					</p>
@@ -126,16 +148,16 @@
 
 					<iframe style="border:none; width:900px; height:800px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQdH8c2b-GJB_Aj2ywVVg0IqqyJIDG9ZYHxDlmVSA_CRL6rprzziT7EXzOiIH2dDo8cHCPNK4zkX9CW/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
-					<br/>
+					<br/><br/>
 
-					<h3>
-						Versions
-					</h3>
+					<h2>
+						Database versioning
+					</h2>
 
 					<br/>
 
 					<p>	
-						All previous versions of <code>childes-db</code> can be found <a href="www.google.com" target="_blank">here</a>.
+						One design goal for childes-db is to ensure reproducibility in analyses. The database is versioned and both the API and visualizations provide the database version for each analysis - we recommend that this detail be reported with any analyses. To reproduce an earlier version of the database, we currently provide direct download from this link, and we hope in the future to make these previous versions more directly accessible through the API.
 					</p>
 
 
