@@ -116,6 +116,11 @@
 
 	</div>
 	<!-- end: Page Title -->
+
+	<div id="wait" class="loader" align="center" style="margin-top: 15%">
+	  <img src="https://media.giphy.com/media/l4eA8oZpx71oQ/giphy.gif">
+	  <!-- <img src="https://cdn.shopify.com/s/files/1/1654/6827/t/15/assets/loading.gif?13586879082999815179"> -->
+	</div>
 	
 	<!--start: Wrapper-->
 	<div id="wrapper">
@@ -123,7 +128,7 @@
 		<div class="container" style="margin-left: 12%; margin-right: 12%">
 				
 		<!--start: Container -->
-	    	<div class="span6">
+	    	<div id="shinytabs" class="span6">
 
 				<ul class="nav nav-tabs">
 				  <li class="active"><a data-toggle="tab" href="#menu1"> Mean Length of Utterance </a></li>
@@ -133,7 +138,7 @@
 
 				<div class="tab-content" style="overflow:visible !important;">
 				    <div id="menu1" class="tab-pane fade in active">
-				      <iframe style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/mlu/"></iframe>
+				      <iframe id="mlu" style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/mlu/"></iframe>
 				    </div>
 				    <div id="menu2" class="tab-pane">
 				      <iframe id="freq" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/freq/" src="about:blank"></iframe>
@@ -161,6 +166,18 @@
 <script src="js/jquery.cslider.js"></script>
 <script src="js/slider.js"></script>
 <script def src="js/custom.js"></script>
+
+<script>
+    $('#shinytabs').hide();
+    var displayAnalysis = function() {
+        console.log('loaded!');
+        $('#wait').hide();
+	    $('#shinytabs').show();
+    }
+    $('#mlu').load(function() {
+        displayAnalysis();
+    });
+</script>
 
 <script>
 $(document).ready(function() {
