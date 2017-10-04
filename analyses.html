@@ -127,8 +127,8 @@
 
 				<ul class="nav nav-tabs">
 				  <li class="active"><a data-toggle="tab" href="#menu1"> Mean Length of Utterance </a></li>
-				  <li><a data-toggle="tab" href="#menu2"> Frequency Counts </a></li>
-				  <li><a data-toggle="tab" href="#menu3"> Population Viewer </a></li>
+				  <li id="m2"><a data-toggle="tab" href="#menu2"> Frequency Counts </a></li>
+				  <li id="m3"><a data-toggle="tab" href="#menu3"> Population Viewer </a></li>
 				</ul>
 
 				<div class="tab-content" style="overflow:visible !important;">
@@ -136,10 +136,10 @@
 				      <iframe style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/mlu/"></iframe>
 				    </div>
 				    <div id="menu2" class="tab-pane">
-				      <iframe style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/freq/"></iframe>
+				      <iframe id="freq" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/freq/" src="about:blank"></iframe>
 				    </div>
 				    <div id="menu3" class="tab-pane">
-				      <iframe style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/pop/"></iframe>
+				      <iframe id="pop" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/pop/" src="about:blank"></iframe>
 				    </div>
 				</div> 
 
@@ -149,10 +149,11 @@
 		
 		
 	</div>
-	<!-- end: Wrapper  -->			
+	<!-- end: Wrapper  -->		
 
 <!-- start: Java Script -->
 <!-- Placed at the end of the document so the pages load faster -->
+
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/flexslider.js"></script>
@@ -160,6 +161,26 @@
 <script src="js/jquery.cslider.js"></script>
 <script src="js/slider.js"></script>
 <script def src="js/custom.js"></script>
+
+<script>
+$(document).ready(function() {
+	$("#m2").on("click", function(){
+	    var iframe = $("#freq");
+	    if (iframe.attr("src") != "about:blank") {
+			return;
+		}
+	    iframe.attr("src", iframe.data("src")); 
+	});
+
+	$("#m3").on("click", function(){
+	    var iframe = $("#pop");
+	    if (iframe.attr("src") != "about:blank") {
+			return;
+		}
+	    iframe.attr("src", iframe.data("src")); 
+	});
+});
+</script>
 <!-- end: Java Script -->
 
 </body>
