@@ -5799,6 +5799,27 @@ a.badge:hover {
   color: inherit;
 }
 
+.hero-unit blockquote {
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: inherit;
+}
+
+.hero-unit ol {
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: inherit;
+}
+
+.hero-unit li {
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: inherit;
+}
+
 .pull-right {
   float: right;
 }
