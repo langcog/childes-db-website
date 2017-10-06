@@ -128,9 +128,9 @@
 		<div class="container" style="margin-left: 12%; margin-right: 12%">
 				
 		<!--start: Container -->
-	    	<div id="shinytabs" class="span6">
+	    	<div class="span6">
 
-				<ul class="nav nav-tabs">
+				<ul id="shinytabs" class="nav nav-tabs" style="display:none">
 				  <li class="active"><a data-toggle="tab" href="#menu1"> Mean Length of Utterance </a></li>
 				  <li id="m2"><a data-toggle="tab" href="#menu2"> Frequency Counts </a></li>
 				  <li id="m3"><a data-toggle="tab" href="#menu3"> Population Viewer </a></li>
@@ -172,7 +172,8 @@
     var displayAnalysis = function() {
         console.log('loaded!');
         $('#wait').hide();
-	    $('#shinytabs').show();
+        $('#shinytabs').css({'display':''});
+	    //$('#shinytabs').show();
     }
     $('#mlu').load(function() {
         displayAnalysis();
