@@ -138,12 +138,14 @@
 devtools::install_github("langcog/childesr")</code>
 </p>
 
-<p>There are four different <code>get_</code> functions that you can use to extract different types of data from the childes-db:</p>
+<p>There are several different <code>get_</code> functions that you can use to extract different types of data from the childes-db:</p>
 <ul>
 <li><code>get_transcripts()</code></li>
 <li><code>get_participants()</code></li>
 <li><code>get_tokens()</code></li>
+<li><code>get_types()</code></li>
 <li><code>get_utterances()</code></li>
+<li><code>get_speaker_statistics()</code></li>
 </ul>
 <p><em>Technical note</em>: you do not have to explicitly establish a connection to the childes-db since the <code>childesr</code> functions will manage these connections. But if you would like to establish your own connection, you can pass it as an argument to any of the <code>get_</code> functions.</p>
 <!-- <p>[TODO: Some viz of the structure of the database with information about the variables]</p>
@@ -306,6 +308,28 @@ d_brown_transcripts &lt;-<span class="st"> </span><span class="kw">get_transcrip
 <pre><code>## [1] &quot;ball&quot; &quot;dog&quot;</code></pre>
 <!-- <p>TODO: just get input vs. production data.</p> -->
 </div>
+
+<div id="get-types" class="section level2">
+<h2>Get types</h2>
+
+<p>The <code>get_types()</code> function works like the <code>get_tokens()</code> function, returning a table with a row for each type based on set of filtering criteria. The type argument allows you to pass a vector of one or more types that you want to analyze. The main difference is that you now have a single row for each type (i.e., a concept) and a variable <code>count</code> that tracks the number of times that type appeared in a particular transcript.</p>
+
+<p>For example, if you wanted to get all of the production data for a specific type(s), then you could run the following call to get counts of “dog” and “ball” for all of Adam’s transcripts in the Brown corpus.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d_adam_types &lt;-<span class="st"> </span><span class="kw">get_types</span>(<span class="dt">collection =</span> <span class="ot">NULL</span>, 
+                          <span class="dt">corpus =</span> <span class="st">"Brown"</span>, 
+                          <span class="dt">child =</span> <span class="st">"Adam"</span>, 
+                          <span class="dt">role =</span> <span class="st">"target_child"</span>,
+                          <span class="dt">role_exclude =</span> <span class="ot">NULL</span>, 
+                          <span class="dt">age =</span> <span class="ot">NULL</span>, 
+                          <span class="dt">sex =</span> <span class="ot">NULL</span>, 
+                          <span class="dt">type =</span> <span class="kw">c</span>(<span class="st">"dog"</span>, <span class="st">"ball"</span>))</code></pre></div>
+<pre><code>## Getting data from 1 child in 1 corpus ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the number of times ball appears in the first transcript</span>
+<span class="kw">c</span>(d_adam_types<span class="op">$</span>gloss[<span class="dv">1</span>], d_adam_types<span class="op">$</span>count[<span class="dv">1</span>])</code></pre></div>
+<pre><code>## [1] "ball" "3"</code></pre>
+</div>
+
 <div id="get-utterances" class="section level2">
 <h2>Get utterances</h2>
 <p>The <code>get_utterances</code> function returns a table utterances based on user-defined filtering criteria. For example, the following function will get you all of the utterances in the Brown Corpus for the child Adam.</p>
@@ -323,9 +347,30 @@ d_adam_utts<span class="op">$</span>gloss[<span class="dv">1</span><span class="
 ## [5] &quot;ups_a_daisy you dropped your shoe&quot;</code></pre>
 </div>
 
+<div id="get-speaker-statistics" class="section level2">
+<h2>Get speaker statistics</h2>
+<p>The <code>get_speaker_statistics()</code> function returns a table with a row for each transcript and columns that contain a set of summary statistics for that transcript. The summary statistics include:</p>
+<ul>
+<li>number of utterances (<code>num_utterances</code>)</li>
+<li>mean length of utterances (<code>mlu</code>)</li>
+<li>number of types (<code>num_types</code>)</li>
+<li>number of tokens (<code>num_tokens</code>)</li>
+</ul>
+<p>For example, if we wanted to get the summary statistics for Adam’s production data, we could run the following call.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d_adam_stats &lt;-<span class="st"> </span><span class="kw">get_speaker_statistics</span>(<span class="dt">collection =</span> <span class="ot">NULL</span>, 
+                                       <span class="dt">corpus =</span> <span class="st">"Brown"</span>, 
+                                       <span class="dt">child =</span> <span class="st">"Adam"</span>, 
+                                       <span class="dt">role =</span> <span class="st">"target_child"</span>,
+                                       <span class="dt">role_exclude =</span> <span class="ot">NULL</span>, 
+                                       <span class="dt">age =</span> <span class="ot">NULL</span>, 
+                                       <span class="dt">sex =</span> <span class="ot">NULL</span>)
+
+<span class="co"># get the average mlu across all Adam's transcripts</span>
+<span class="kw">mean</span>(d_adam_stats<span class="op">$</span>mlu)</code></pre></div>
+<pre><code>## [1] 3.591833</code></pre>
 </div>
 
-
+</div>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
