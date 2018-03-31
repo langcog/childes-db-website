@@ -131,17 +131,17 @@
 	    	<div class="span6">
 
 				<ul id="shinytabs" class="nav nav-tabs" style="display:none">
-				  <li class="active"><a data-toggle="tab" href="#menu1"> Mean Length of Utterance </a></li>
-				  <li id="m2"><a data-toggle="tab" href="#menu2"> Frequency Counts </a></li>
+				  <li class="active"><a data-toggle="tab" href="#menu1"> Frequency Counts </a></li>
+				  <li id="m2"><a data-toggle="tab" href="#menu2"> Derived Measures </a></li>
 				  <li id="m3"><a data-toggle="tab" href="#menu3"> Population Viewer </a></li>
 				</ul>
 
 				<div class="tab-content" style="overflow:visible !important;">
 				    <div id="menu1" class="tab-pane fade in active">
-				      <iframe id="mlu" style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/mlu/"></iframe>
+				      <iframe id="freq" style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/freq/"></iframe>
 				    </div>
 				    <div id="menu2" class="tab-pane">
-				      <iframe id="freq" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/freq/" src="about:blank"></iframe>
+				      <iframe id="mlu" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/mlu/" src="about:blank"></iframe>
 				    </div>
 				    <div id="menu3" class="tab-pane">
 				      <iframe id="pop" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/pop/" src="about:blank"></iframe>
@@ -175,7 +175,7 @@
         $('#shinytabs').css({'display':''});
 	    //$('#shinytabs').show();
     }
-    $('#mlu').load(function() {
+    $('#freq').load(function() {
         displayAnalysis();
     });
 </script>
