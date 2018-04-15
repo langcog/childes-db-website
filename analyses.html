@@ -1,205 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+---
+layout: default
+title: childes-db Analyses
+---
 
-	<!-- start: Meta -->
-	<meta charset="utf-8">
-	<title>childes-db: Analyses</title> 
-	<!-- end: Meta -->
-	
-	<!-- start: Mobile Specific -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- end: Mobile Specific -->
-	
-	<!-- start: Facebook Open Graph -->
-	<meta property="og:title" content=""/>
-	<meta property="og:description" content=""/>
-	<meta property="og:type" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:image" content=""/>
-	<!-- end: Facebook Open Graph -->
 
-    <!-- start: CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
-	<!-- end: CSS -->
+<div id="wrapper">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<div class="container" style="margin-left: 12%; margin-right: 12%">
 
-    <script>
-	 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		<div class="span6" >
 
-	 ga('create', 'UA-106399579-1', 'auto');
-	 ga('send', 'pageview');
-	</script>
+			<ul id="shinytabs" class="nav nav-tabs" style="display:none">
+			  <li class="active"><a data-toggle="tab" href="#menu1"> Frequency Counts </a></li>
+			  <li id="m2"><a data-toggle="tab" href="#menu2"> Derived Measures </a></li>
+			  <li id="m3"><a data-toggle="tab" href="#menu3"> Population Viewer </a></li>
+			</ul>
 
-</head>
-<body>
-	
-	<!--start: Header -->
-	<header>
-		
-		<!--start: Container -->
-		<div class="container">
-			
-			<!--start: Row -->
-			<div class="row">
-					
-				<!--start: Logo -->
-				<div class="logo span3">
-						
-					<!-- <a class="brand" href="index.html"><img src="img/logo.png"></a> -->
-					<a class="brand" href="index.html" style="text-decoration: none"><h1 style="margin-top:13px;"> childes-db </h1></a>
-						
-				</div>
-				<!--end: Logo -->
-					
-				<!--start: Navigation -->
-				<div class="span9">
-					
-					<div class="navbar navbar-inverse">
-			    		<div class="navbar-inner">
-			          		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			            		<span class="icon-bar"></span>
-			            		<span class="icon-bar"></span>
-			            		<span class="icon-bar"></span>
-			          		</a>
-			          		<div class="nav-collapse collapse">
-			            		<ul class="nav">
-			              			<li><a href="api.html">API Tutorial</a></li>
-			            			<li class="active"><a href="analyses.html">Visualizations</a></li>
-			            			<li><a href="docs.html">Documentation</a></li>
-			              			<li><a href="about.html">About</a></li>
-			              			<!-- <li><a href="faq.html">FAQ</a></li> -->
-			            		</ul>
-			          		</div>
-			        	</div>
-			      	</div>
-					
-				</div>	
-				<!--end: Navigation -->
-					
-			</div>
-			<!--end: Row -->
-			
-		</div>
-		<!--end: Container-->			
-			
-	</header>
-	<!--end: Header-->
-	
-	<!-- start: Page Title -->
-	<div id="page-title">
+			<div class="tab-content" style="overflow:visible !important;">
+			    <div id="menu1" class="tab-pane fade in active">
+			      <iframe id="freq" style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/freq/"></iframe>
+			    </div>
+			    <div id="menu2" class="tab-pane">
+			      <iframe id="mlu" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/mlu/" src="about:blank"></iframe>
+			    </div>
+			    <div id="menu3" class="tab-pane">
+			      <iframe id="pop" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/pop/" src="about:blank"></iframe>
+			    </div>
+			</div> 
 
-		<div id="page-title-inner">
-
-			<!-- start: Container -->
-			<div class="container">
-
-				<!-- <h2><i class="ico-stats ico-white"></i>Analyses</h2> -->
-
-			</div>
-			<!-- end: Container  -->
-
-		</div>	
-
+		</div> <!--end: Span6-->
 	</div>
-	<!-- end: Page Title -->
 
-	<div id="wait" class="loader" align="center" style="margin-top: 15%">
-	  <img src="https://media.giphy.com/media/l4eA8oZpx71oQ/giphy.gif">
-	  <!-- <img src="https://cdn.shopify.com/s/files/1/1654/6827/t/15/assets/loading.gif?13586879082999815179"> -->
-	</div>
-	
-	<!--start: Wrapper-->
-	<div id="wrapper">
+</div>
 
-		<div class="container" style="margin-left: 12%; margin-right: 12%">
-				
-		<!--start: Container -->
-	    	<div class="span6">
-
-				<ul id="shinytabs" class="nav nav-tabs" style="display:none">
-				  <li class="active"><a data-toggle="tab" href="#menu1"> Frequency Counts </a></li>
-				  <li id="m2"><a data-toggle="tab" href="#menu2"> Derived Measures </a></li>
-				  <li id="m3"><a data-toggle="tab" href="#menu3"> Population Viewer </a></li>
-				</ul>
-
-				<div class="tab-content" style="overflow:visible !important;">
-				    <div id="menu1" class="tab-pane fade in active">
-				      <iframe id="freq" style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/freq/"></iframe>
-				    </div>
-				    <div id="menu2" class="tab-pane">
-				      <iframe id="mlu" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/mlu/" src="about:blank"></iframe>
-				    </div>
-				    <div id="menu3" class="tab-pane">
-				      <iframe id="pop" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/pop/" src="about:blank"></iframe>
-				    </div>
-				</div> 
-
-			</div> <!--end: Span6-->
-	
-		</div>
-		
-		
-	</div>
-	<!-- end: Wrapper  -->		
-
-<!-- start: Java Script -->
-<!-- Placed at the end of the document so the pages load faster -->
-
-<script src="js/jquery-1.8.2.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/flexslider.js"></script>
-<script src="js/carousel.js"></script>
-<script src="js/jquery.cslider.js"></script>
-<script src="js/slider.js"></script>
-<script def src="js/custom.js"></script>
-
-<script>
-    $('#shinytabs').hide();
-    var displayAnalysis = function() {
-        console.log('loaded!');
-        $('#wait').hide();
-        $('#shinytabs').css({'display':''});
-	    //$('#shinytabs').show();
-    }
-    $('#freq').load(function() {
-        displayAnalysis();
-    });
-</script>
-
-<script>
-$(document).ready(function() {
-	$("#m2").on("click", function(){
-	    var iframe = $("#mlu");
-	    if (iframe.attr("src") != "about:blank") {
-			return;
-		}
-	    iframe.attr("src", iframe.data("src")); 
-	});
-
-	$("#m3").on("click", function(){
-	    var iframe = $("#pop");
-	    if (iframe.attr("src") != "about:blank") {
-			return;
-		}
-	    iframe.attr("src", iframe.data("src")); 
-	});
-});
-</script>
-<!-- end: Java Script -->
-
-</body>
-</html>	
+{% include footer.html %}
