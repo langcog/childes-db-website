@@ -8,27 +8,49 @@ title: childes-db Analyses
 
 	<div class="container" style="margin-left: 12%; margin-right: 12%">
 
-		<div class="span6" >
 
-			<ul id="shinytabs" class="nav nav-tabs" style="display:none">
-			  <li class="active"><a data-toggle="tab" href="#menu1"> Frequency Counts </a></li>
-			  <li id="m2"><a data-toggle="tab" href="#menu2"> Derived Measures </a></li>
-			  <li id="m3"><a data-toggle="tab" href="#menu3"> Population Viewer </a></li>
-			</ul>
+			<div class="row">
+				<div class="span6" >
+					<a href="frequency.html">
+		                <img src="img/frequency_preview.png">
+		            </a>		            
+				</div>
+				<div class="span6" >
+					<div class="caption">
+		                <h3><a href="frequency.html">Frequency</a></h3>
+		                 The frequency tool shows word counts over all utterances marked as belonging to a particular speaker.
+		            </div>
+		        </div>
+			</div>		
+			<div class="row">
+				<div class="span6" >
+					<a href="mlu.html">
+			                <img src="img/mlu_preview.png">
+			            </a>			            
+			    </div>      
+			    <div class="span6" >
+			    	<div class="caption">
+			                <h3><a href="mlu.html">Derived Measures</a></h3>
+			                This analysis shows growth curves for various lexical measures including Mean Length of Utterance in words (MLU-w) and Type-Token Ratio (TTR). Measures are computed over all utterances marked as belonging to a particular speaker.
+			        </div>
 
-			<div class="tab-content" style="overflow:visible !important;">
-			    <div id="menu1" class="tab-pane fade in active">
-			      <iframe id="freq" style="border:none; width:1100px; height:800px" src="http://34.212.148.26:3838/freq/"></iframe>
+			    </div>        
+			</div>
+			<div class="row">
+				<div class="span6" >
+					<a href="population.html">
+			                <img src="img/population_preview.png">
+			            </a>
+			            
+			    </div>        
+			    <div class="span6" >
+			    	<div class="caption">
+			                <h3><a href="population.html">Population Properties</a></h3>
+			                This analysis plots the number of utterances or word tokens by particular speakers in particular corpora.
+			        </div>
 			    </div>
-			    <div id="menu2" class="tab-pane">
-			      <iframe id="mlu" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/mlu/" src="about:blank"></iframe>
-			    </div>
-			    <div id="menu3" class="tab-pane">
-			      <iframe id="pop" style="border:none; width:1100px; height:800px" data-src="http://34.212.148.26:3838/pop/" src="about:blank"></iframe>
-			    </div>
-			</div> 
 
-		</div> <!--end: Span6-->
+			</div>
 	</div>
 
 </div>
