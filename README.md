@@ -4,9 +4,9 @@ The childes-db website is now generated using Jekyll, the static site generator 
 
 Typically GH Pages runs Jekyll on all GH pages whenever a commit is pushed on master. To use Jekyll locally to preview the site (*strongly* recommended), you must install Jekyll following the instructions [here](https://jekyllrb.com/docs/installation/).
 
-Install dependencies: `bundle install` 
-Test build: `[bundle exec] jekyll build`
-Serve on localhost: `[bundle exec] jekyll serve`
+Install dependencies: `bundle install`   
+Test build: `[bundle exec] jekyll build`  
+Serve on localhost: `[bundle exec] jekyll serve`  
 
 `jekyll serve` reflects live updates for any component files (templates, includes, or content).  
 
