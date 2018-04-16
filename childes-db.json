@@ -1,3 +1,8 @@
+---
+layout: null
+permalink: /childesdb-json/
+---
+
 {
 	"host":"ec2-54-68-171-132.us-west-2.compute.amazonaws.com",
 	"current":"childesdb",
