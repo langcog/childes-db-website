@@ -1,218 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+---
+layout: default
+title: childes-db Documentation
+---
 
-	<!-- start: Meta -->
-	<meta charset="utf-8">
-	<title>childes-db: Documentation</title> 
-	<!-- end: Meta -->
-	
-	<!-- start: Mobile Specific -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- end: Mobile Specific -->
-	
-	<!-- start: Facebook Open Graph -->
-	<meta property="og:title" content=""/>
-	<meta property="og:description" content=""/>
-	<meta property="og:type" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:image" content=""/>
-	<!-- end: Facebook Open Graph -->
-
-    <!-- start: CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
-	<!-- end: CSS -->
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <script>
-	 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-	 ga('create', 'UA-106399579-1', 'auto');
-	 ga('send', 'pageview');
-	</script>
-
-</head>
-<body>
-	
-	<!--start: Header -->
-	<header>
+<div id="wrapper">
+	<div class="container">
 		
-		<!--start: Container -->
-		<div class="container">
-			
-			<!--start: Row -->
-			<div class="row">
+		<!--start: Row -->
+		<div class="row">
+
+			<div class="hero-unit">
+
+				<h2>
+					Codebase and issue tracking
+				</h2>
+
+				<br/>
+
+				<p>
+					<code>childes-db</code> is all open source and is under active development. If you run into an issue, please let us know by github's issue tracking at the appropriate repository: <br/><br/>
+
 					
-				<!--start: Logo -->
-				<div class="logo span3">
-						
-					<!-- <a class="brand" href="index.html"><img src="img/logo.png"></a> -->
-					<a class="brand" href="index.html" style="text-decoration: none"><h1 style="margin-top:13px;"> childes-db </h1></a>
-						
-				</div>
-				<!--end: Logo -->
-					
-				<!--start: Navigation -->
-				<div class="span9">
-					
-					<div class="navbar navbar-inverse">
-			    		<div class="navbar-inner">
-			          		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			            		<span class="icon-bar"></span>
-			            		<span class="icon-bar"></span>
-			            		<span class="icon-bar"></span>
-			          		</a>
-			          		<div class="nav-collapse collapse">
-			            		<ul class="nav">
-			            			<li><a href="api.html">API Tutorial</a></li>
-			            			<li><a href="analyses.html">Visualizations</a></li>
-			            			<li class="active"><a href="docs.html">Documentation</a></li>
-			              			<li><a href="about.html">About</a></li>
-			              			<!-- <li><a href="faq.html">FAQ</a></li> -->
-			            		</ul>
-			          		</div>
-			        	</div>
-			      	</div>
-					
-				</div>	
-				<!--end: Navigation -->
-					
+					Database and extraction method: <a href="https://github.com/langcog/childes-db" style="color:#3399f3">https://github.com/langcog/childes-db</a> <br/>
+					R package: <a href="https://github.com/langcog/childesr" style="color:#3399f3">https://github.com/langcog/childesr</a> <br/>
+					Interactive applications: <a href="https://github.com/langcog/childes-db-shiny" style="color:#3399f3">https://github.com/langcog/childes-db-shiny</a> <br/>
+					Website frontend: <a href="http://github.com/langcog/childes-db-website" style="color:#3399f3">http://github.com/langcog/childes-db-website</a> <br/>
+					<br/>
+
+					If you have any other questions about <code>childes-db</code> or want to stay updated on changes to the database, visualizations, or API, join our <a href="https://mailman.stanford.edu/mailman/listinfo/childes-db" style="color:#3399f3">mailing list</a>.<br/><br/>
+
+					If you would like to contact us directly, email us at childes-db-contact@stanford.edu.
+				</p>
+
+				<br/>
+
+				<h2>
+					Backend and CHAT format treatment
+				</h2>
+
+				<br/>
+
+				<p>
+					The <code>childes-db</code> project stores CHILDES data in a MySQL relational database. The original CHAT files were converted to XML via chatter, a cross-platform application provided by TalkBank. The XML files were then parsed using the Python xml library and subsequently imported into a MySQL database through Django. The annotations and markers from the original CHAT files that were preserved in <code>childes-db</code> can be found in the table below:
+				</p>
+
+				<br/>
+
+				<iframe style="border:none; width:900px; height:800px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQdH8c2b-GJB_Aj2ywVVg0IqqyJIDG9ZYHxDlmVSA_CRL6rprzziT7EXzOiIH2dDo8cHCPNK4zkX9CW/pubhtml?gid=0&single=true&widget=true&headers=false"></iframe>
+
+				<br/><br/>
+
+				<h2>
+					Database versioning
+				</h2>
+
+				<br/>
+
+				<p>	
+					One design goal for <code>childes-db</code> is to ensure reproducibility in analyses. The database is versioned and both the API and visualizations provide the database version for each analysis - we recommend that this detail be reported with any analyses. To reproduce an earlier version of the database, we currently provide <a href="releases.html">direct downloads</a>, and we hope in the future to make these previous versions more directly accessible through the API. For additional information regarding the database schema, sample queries and instructions regarding local installation of the database, refer to the documentation for <a href="https://github.com/smeylan/childes-db" style="color:#3399f3">childes-db</a>. Note that <a href="http://childes-db.stanford.edu/api.html" style="color:#3399f3">API access</a> should handle most use cases for most users.
+				</p>				
+
 			</div>
-			<!--end: Row -->
+			
+			
 			
 		</div>
-		<!--end: Container-->			
-			
-	</header>
-	<!--end: Header-->
-	
-	<!-- start: Page Title -->
-	<div id="page-title">
-
-		<div id="page-title-inner">
-
-			<!-- start: Container -->
-			<div class="container">
-
-				<!-- <h2><i class="ico-file ico-white"></i>Documentation</h2> -->
-
-			</div>
-			<!-- end: Container  -->
-
-		</div>	
+		<!--end: Row-->
 
 	</div>
-	<!-- end: Page Title -->
-	
-	<!--start: Wrapper-->
-	<div id="wrapper">
-				
-		<!--start: Container -->
-    	<div class="container">
-	
-			<!--start: Row -->
-	    	<div class="row">
-
-	    		<div class="hero-unit">
-		
-					<h2>
-						Codebase and issue tracking
-					</h2>
-
-					<br/>
-
-					<p>
-						<code>childes-db</code> is all open source and is under active development. If you run into an issue, please let us know by github's issue tracking at the appropriate repository: <br/><br/>
-
-						Website frontend: <a href="http://github.com/langcog/childes-db-website" style="color:#3399f3">http://github.com/langcog/childes-db-website</a> <br/>
-						Interactive applications: <a href="https://github.com/langcog/childes-db-shiny" style="color:#3399f3">https://github.com/langcog/childes-db-shiny</a> <br/>
-						R package: <a href="https://github.com/langcog/childesr" style="color:#3399f3">https://github.com/langcog/childesr</a> <br/><br/>
-
-						If you have any other questions about <code>childes-db</code> or want to stay updated on changes to the database, visualizations, or API, join our <a href="https://mailman.stanford.edu/mailman/listinfo/childes-db" style="color:#3399f3">mailing list</a>.<br/><br/>
-
-						If you would like to contact us directly, email us at childes-db-contact@stanford.edu.
-					</p>
-
-					<br/>
-
-					<h2>
-						Backend and CHAT format treatment
-					</h2>
-
-					<br/>
-
-					<p>
-						The <code>childes-db</code> project stores CHILDES data in a MySQL relational database. The original CHAT files were converted to XML via chatter, a cross-platform application provided by TalkBank. The XML files were then parsed using the Python xml library and subsequently imported into a MySQL database through Django. The annotations and markers from the original CHAT files that were preserved in <code>childes-db</code> can be found in the table below:
-					</p>
-
-					<br/>
-
-					<iframe style="border:none; width:900px; height:800px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQdH8c2b-GJB_Aj2ywVVg0IqqyJIDG9ZYHxDlmVSA_CRL6rprzziT7EXzOiIH2dDo8cHCPNK4zkX9CW/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-
-					<br/><br/>
-
-					<h2>
-						Database versioning
-					</h2>
-
-					<br/>
-
-					<p>	
-						One design goal for <code>childes-db</code> is to ensure reproducibility in analyses. The database is versioned and both the API and visualizations provide the database version for each analysis - we recommend that this detail be reported with any analyses. To reproduce an earlier version of the database, we currently provide direct downloads below, and we hope in the future to make these previous versions more directly accessible through the API. For additional information regarding the database schema, sample queries and instructions regarding local installation of the database, refer to the documentation for <a href="https://github.com/smeylan/childes-db" style="color:#3399f3">childes-db</a>. Note that <a href="http://childes-db.stanford.edu/api.html" style="color:#3399f3">API access</a> should handle most use cases for most users.
-					</p>
-
-					<ul> 
-						<li><a href="http://childes-db-archive.s3.amazonaws.com/childes-db-version-0.1.0.sql.gz">childes-db-version-0.1.0</a></li>
-					</ul>
+	<!--end: Container-->
+</div>
 
 
-				</div>
-				
-				
-				
-			</div>
-			<!--end: Row-->
-	
-		</div>
-		<!--end: Container-->
-
-	</div>
-	<!-- end: Wrapper  -->			
-
-<script src="js/jquery-1.8.2.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/flexslider.js"></script>
-<script src="js/carousel.js"></script>
-<script src="js/jquery.cslider.js"></script>
-<script src="js/slider.js"></script>
-<script def src="js/custom.js"></script>
-
-</body>
-
-<footer id="footer">
-    <div class="container">
-      <center>
-        <small>
-          <p class="text-muted">
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
-            <br>childes-db is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.
-          </p>
-        </small>
-      </center>
-    </div>
-  </footer>	
-
-</html>	
+{% include footer.html %}

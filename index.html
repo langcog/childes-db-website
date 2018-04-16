@@ -1,264 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+---
+layout: default
+title: childes-db
+---
 
-	<!-- start: Meta -->
-	<meta charset="utf-8">
-	<title>childes-db</title> 
-	<meta name="description" content="GotYa Free Bootstrap Theme"/>
-	<meta name="keywords" content="Template, Theme, web, html5, css3, Bootstrap" />
-	<meta name="author" content="Łukasz Holeczek from creativeLabs"/>
-	<!-- end: Meta -->
-	
-	<!-- start: Mobile Specific -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- end: Mobile Specific -->
-	
-	<!-- start: Facebook Open Graph -->
-	<meta property="og:title" content=""/>
-	<meta property="og:description" content=""/>
-	<meta property="og:type" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:image" content=""/>
-	<!-- end: Facebook Open Graph -->
+<div id="wrapper">
+	<!--start: Container -->
+	<div class="container">
 
-    <!-- start: CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
-	<!-- end: CSS -->
+		<!-- <div style="margin-top:20px">
+			<img src="img/childes-db-banner.png" alt="Logo">
+		</div> -->
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-  	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-  	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-  	<!-- <link rel="stylesheet" href="http://wordbank.stanford.edu/static/third_party/bootstrap3/css/bootstrap-spacelab.min.css"> -->
-  	<!-- <link rel="stylesheet" href="http://wordbank.stanford.edu/static/third_party/bootstrap3/css/bootstrap-theme.css.map"> -->
-  	<!-- <link rel="stylesheet" href="http://wordbank.stanford.edu/static/css/base.css"> -->
-
-  	<script>
-	 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-	 ga('create', 'UA-106399579-1', 'auto');
-	 ga('send', 'pageview');
-	</script>
-
-</head>
-<body>
-	
-	<!--start: Header -->
-	<header>
-		
-		<!--start: Container -->
 		<div class="container">
-			
-			<!--start: Row -->
-			<div class="row">
-					
-				<!--start: Logo -->
-				<div class="logo span3">
-						
-					<!-- <a class="brand" href="index.html"><img src="img/logo.png" alt="Logo"></a> -->
-					<a class="brand" href="index.html" style="text-decoration: none"><h1 style="margin-top:13px;"> childes-db </h1></a>
-						
-				</div>
-				<!--end: Logo -->
-					
-				<!--start: Navigation -->
-				<div class="span9">
-					
-					<div class="navbar navbar-inverse">
-			    		<div class="navbar-inner">
-			          		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			            		<span class="icon-bar"></span>
-			            		<span class="icon-bar"></span>
-			            		<span class="icon-bar"></span>
-			          		</a>
-			          		<div class="nav-collapse collapse">
-			            		<ul class="nav">
-			            			<li><a href="api.html">API Tutorial</a></li>
-			            			<li><a href="analyses.html">Visualizations</a></li>
-			            			<li><a href="docs.html">Documentation</a></li>
-			              			<li><a href="about.html">About</a></li>
-			              			<!-- <li><a href="faq.html">FAQ</a></li> -->
-			            		</ul>
-			          		</div>
-			        	</div>
-			      	</div>
-					
-				</div>	
-				<!--end: Navigation -->
-					
-			</div>
-			<!--end: Row -->
-			
+		  <!-- <div class="jumbotron less-pad">
+		  	<div class="row">
+			  	<div> <img src="img/childes-db.png" style="float:left; height:110px; width:125px"> </div>
+			  	<div> <center><h2 style="text-align:center">childes-db</h2></center> </div>
+			  	<div> <img src="http://childes.talkbank.org/childes.gif" style="float:right;height:110px; width:125px"> </div>
+		  	</div>
+		  </div>   -->    
+		  <br/>
+		  <div class="jumbotron">
+		    <div class="row">
+		        <div class="col-md-2 left">
+		            <img class="left-image" style="max-height:115px; margin-left:10px" src="img/childes-db.png">
+		        </div>
+		        <div class="col-md-6 center" style="text-align:center; margin-top:25px; margin-left:22px; color:black; font-size:18px; font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;">
+		            <h2 style="color:black; font-size:55px; font-family: Open Sans, Helvetica Neue,Helvetica,Arial,sans-serif;">childes-db</h2>
+		            <br/>
+		            A flexible and reproducible interface to CHILDES
+		        </div>
+		        <div style="float: right">
+		        	<a href="https://childes.talkbank.org" target="_blank">
+		            	<img style="max-height: 110px; margin-top:10px; margin-right: -20px" src="http://childes.talkbank.org/childes.gif">
+		            </a>
+		        </div>
+		    </div>
 		</div>
-		<!--end: Container-->			
-			
-	</header>
-	<!--end: Header-->
+		</div>
 
-	<!-- <div>
-	<img style="float: left;" src="http://dummyimage.com/100X100/000/fff" />
-			<div style="float: left;">This is text</div>
-			<img style="float: right;" src="http://dummyimage.com/100X100/000/fff" />
-	</div> -->
+		<!-- <div style="margin: 0 auto; width: 300px; height: 300px; margin-top: 25px;">
+			<img src="img/childes-chihuahua.png" alt="Logo">
+		</div> -->
 
-	<div id="page-title">
+  		<!-- start: Row -->
+  		<div class="row">
 
-		<div id="page-title-inner">
-
-			<!-- start: Container -->
-			<div class="container">
-
-				<!-- <h2><i class="ico-stats ico-white"></i>About childes-db</h2> -->
-
-			</div>
-			<!-- end: Container  -->
-
-		</div>	
-
-	</div>
-
-	<!--start: Wrapper-->
-	<div id="wrapper">
-
-		<!--start: Container -->
-    	<div class="container">
-
-    		<!-- <div style="margin-top:20px">
-    			<img src="img/childes-db-banner.png" alt="Logo">
+    		<!-- <a href="docs.html"><div class="span4">
+      			<div class="icons-box"> -->
+      				<!-- ico-ok ico-color circle-color big -->
+      				<!--  ico-ok circle big-->
+      				<!-- ico-white circle-color-full big-color -->
+					<!-- <i class="ico-file ico-white circle-color-full big-color"></i></a>
+					<div class="title"><h4>Documentation</h4></div>
+					<p>
+						Learn about the CHILDES project, our childes-db database, and the API.
+					</p>
+					<div class="clear"></div>
+				</div>
     		</div> -->
 
-    		<div class="container">
-			  <!-- <div class="jumbotron less-pad">
-			  	<div class="row">
-				  	<div> <img src="img/childes-db.png" style="float:left; height:110px; width:125px"> </div>
-				  	<div> <center><h2 style="text-align:center">childes-db</h2></center> </div>
-				  	<div> <img src="http://childes.talkbank.org/childes.gif" style="float:right;height:110px; width:125px"> </div>
-			  	</div>
-			  </div>   -->    
-			  <br/>
-			  <div class="jumbotron">
-			    <div class="row">
-			        <div class="col-md-2 left">
-			            <img class="left-image" style="max-height:115px; margin-left:10px" src="img/childes-db.png">
-			        </div>
-			        <div class="col-md-6 center" style="text-align:center; margin-top:25px; margin-left:22px; color:black; font-size:18px; font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;">
-			            <h2 style="color:black; font-size:55px; font-family: Open Sans, Helvetica Neue,Helvetica,Arial,sans-serif;">childes-db</h2>
-			            <br/>
-			            A flexible and reproducible interface to CHILDES
-			        </div>
-			        <div style="float: right">
-			        	<a href="https://childes.talkbank.org" target="_blank">
-			            	<img style="max-height: 110px; margin-top:10px; margin-right: -20px" src="http://childes.talkbank.org/childes.gif">
-			            </a>
-			        </div>
-			    </div>
-			</div>
-			</div>
+    		<a href="api.html">
+    		<div class="span6">
+      			<div class="icons-box">
+					<div class="title"><h3>API Tutorial</h3></div>
+					<p style="font-size: 16px">
+						Get a hands on walk-through on accessing <code>childes-db</code> through R.
+					</p>
+					<div class="clear"></div>
+					<img style="margin-top: 20px" src="img/code.png" alt="Logo">
+					<!-- <i class="ico-list ico-white circle-color-full big-color"></i> --></a>
+				</div>
+    		</div>
 
-    		<!-- <div style="margin: 0 auto; width: 300px; height: 300px; margin-top: 25px;">
-				<img src="img/childes-chihuahua.png" alt="Logo">
-			</div> -->
+    		<a href="analyses.html">
+    		<div class="span6">
+      			<div class="icons-box">
+					<div class="title"><h3>Visualizations</h3></div>
+					<p style="font-size: 16px">
+						Explore the data in <code>childes-db</code> using our interactive applications.
+					</p>
+					<div class="clear"></div>
+					<img style="margin-top: 20px; max-height:180px" src="img/plot.png" alt="Logo">
+					<!-- <i class="ico-stats ico-white circle-color-full big-color"></i> --></a>
+				</div>
+    		</div>
 
-      		<!-- start: Row -->
-      		<div class="row">
-	
-        		<!-- <a href="docs.html"><div class="span4">
-          			<div class="icons-box"> -->
-          				<!-- ico-ok ico-color circle-color big -->
-          				<!--  ico-ok circle big-->
-          				<!-- ico-white circle-color-full big-color -->
-						<!-- <i class="ico-file ico-white circle-color-full big-color"></i></a>
-						<div class="title"><h4>Documentation</h4></div>
-						<p>
-							Learn about the CHILDES project, our childes-db database, and the API.
-						</p>
-						<div class="clear"></div>
-					</div>
-        		</div> -->
+  		</div>
+		<!-- end: Row -->
 
-        		<a href="api.html">
-        		<div class="span6">
-          			<div class="icons-box">
-						<div class="title"><h3>API Tutorial</h3></div>
-						<p style="font-size: 16px">
-							Get a hands on walk-through on accessing <code>childes-db</code> through R.
-						</p>
-						<div class="clear"></div>
-						<img style="margin-top: 20px" src="img/code.png" alt="Logo">
-						<!-- <i class="ico-list ico-white circle-color-full big-color"></i> --></a>
-					</div>
-        		</div>
+		<!-- start: Hero Unit - Main hero unit for a primary marketing message or call to action -->
+  		<div class="hero-unit">
 
-        		<a href="analyses.html">
-        		<div class="span6">
-          			<div class="icons-box">
-						<div class="title"><h3>Visualizations</h3></div>
-						<p style="font-size: 16px">
-							Explore the data in <code>childes-db</code> using our interactive applications.
-						</p>
-						<div class="clear"></div>
-						<img style="margin-top: 20px; max-height:180px" src="img/plot.png" alt="Logo">
-						<!-- <i class="ico-stats ico-white circle-color-full big-color"></i> --></a>
-					</div>
-        		</div>
-
-      		</div>
-			<!-- end: Row -->
-
-			<!-- start: Hero Unit - Main hero unit for a primary marketing message or call to action -->
-      		<div class="hero-unit">
-
-        		<p>
-        			The <code>childes-db</code> project is an open database storing CHILDES data in an easily accessible, tabular format. Researchers can now interface with CHILDES through <a href="analyses.html" style="color:#3399f3">interactive visualizations</a> or the <a href="https://langcog.github.io/childesr//index.html" style="color:#3399f3">childesr</a> R package.
-				</p>
-      		</div>
-			<!-- end: Hero Unit -->
-			
-			
-		</div>
-		<!--end: Container-->
-	
+    		<p>
+    			The <code>childes-db</code> project is an open database storing CHILDES data in an easily accessible, tabular format. Researchers can now interface with CHILDES through <a href="analyses.html" style="color:#3399f3">interactive visualizations</a> or the <a href="https://langcog.github.io/childesr//index.html" style="color:#3399f3">childesr</a> R package.
+			</p>
+  		</div>
+		<!-- end: Hero Unit -->
+		
+		
 	</div>
-	<!-- end: Wrapper  -->		
+	<!--end: Container-->
 
-<footer id="footer">
-    <div class="container">
-      <center>
-        <small>
-          <p class="text-muted">
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
-            <br>childes-db is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.
-          </p>
-        </small>
-      </center>
-    </div>
-  </footer>	
+</div>
+<!-- end: Wrapper  -->		
 
-
-<!-- start: Java Script -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-1.8.2.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/flexslider.js"></script>
-<script src="js/carousel.js"></script>
-<script src="js/jquery.cslider.js"></script>
-<script src="js/slider.js"></script>
-<script defer="defer" src="js/custom.js"></script>
-<!-- end: Java Script -->
-
-</body>
-</html>
+{% include footer.html %}

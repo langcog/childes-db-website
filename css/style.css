@@ -1556,7 +1556,11 @@ form#newsletter input[type=submit] {
 }
 
 a, a:visited, a:hover, a:active {
-  color: inherit;
+  color:#3399f3;
+}
+
+a, a:link{
+  color:#3399f3;
 }
 
 
@@ -1599,4 +1603,3 @@ a, a:visited, a:hover, a:active {
 	}
 	
 }
-	
