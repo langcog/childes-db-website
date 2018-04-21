@@ -4,9 +4,9 @@ layout: null
 
 {
 	"host":"ec2-54-68-171-132.us-west-2.compute.amazonaws.com",
-	"current":"childesdb",
-	"supported": ["childesdb"],
-	"historical":["childesdb"],
+	"current":"2018.1",
+	"supported": ["2018.1"],
+	"historical":[],
 	"user": "childesdb",
 	"password": "uy5z4hf7ihBjf"
 }
