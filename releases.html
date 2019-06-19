@@ -5,48 +5,49 @@ title: childes-db Releases
 
 <div id="wrapper">
 	<div class="container">
-		
+
 		<h2>
 			Releases
 		</h2>
 
-		<div class="hero-unit">				
-		
-			<div class="row">	
+		<div class="hero-unit">
+
+			<div class="row">
 				<p><code>childes-db</code> will be updated every 6 months with a most recent parse of the CHILDES database, reflecting the addition of new corpora and the revision of older annotations (more details can be found in the <a href="docs.html">documentation</a>). Visualizations and the childesr package will always use the most recent database version by default. The primary method of interacting with childes-db, the R API <code>childesr</code>, can be directed to use any recent database version by using the <code>version</code> parameter. We provide here compressed .sql files for users wanting to refer to older releases or to install the database locally.</p>
 			</div>
 
-			<div class="row">	
-		
+			<div class="row">
 
-				
 
-				<ul> 
+
+
+				<ul>
 					<li><a href="http://childes-db-archive.s3.amazonaws.com/childes-db-version-0.1.0.sql.gz">childes-db-version-0.1.0</a></li>
 				</ul>
 
 
-			
+
 			</div>
 
-			<div class="row">	
+			<div class="row">
 				<p>To use the .sql file you will need to have a working version of MySQL server and a client. We recommend <a href="https://www.mamp.info/en/">MAMP</a> and <a href="https://www.sequelpro.com">SequelPro</a> as easy-to-use server and client software. Loading the database from the .sql file is fastest and easiest from the command line client. Remember to replace the name of the .sql file with the filename you downloaded.</p>
-					<ol>
-					<li>	
+					<ul>
+					<li>
 					If your browser did not automatically unzip the .sql.gz file, unzip it with <code>gunzip childes-db-version-0.1.0.sql.gz</code></li>
-					<li> Then from the same directory with the uncompressed .sql file, connect to MySQL: <code>mysql --host=127.0.0.1 --port 8889 --user=root --password=root</code> (assumes default MAMP credentials)
-					</li>
-					<li> From within the MySQL console, create the database: <code>create database childesdb-0.1.0</code></li>
+					<li> Then from the same directory with the uncompressed .sql file, connect to MySQL: <code>mysql --host=127.0.0.1 --port 8889 --user=root --password=root</code> (assumes default MAMP credentials)</li>
+					<li> Note that if you get a "command not found error", you may need to use MAMP to start your MySQL server running and add the MAMP application to your path, e.g. by adding this line to you <code>.bashrc</code> file in your home directory:<br>
+						<code>export PATH="/Applications/MAMP/Library/bin:$PATH"</code> </li>
+					<li> From within the MySQL console, create the database: <code>create database childesdb</code></li>
 					<li> Quit the MySQL console with <code>\q</code></li>
-					<li> Load the sql dump into the database with <code>mysql --host=127.0.0.1 --port 8889 --user=root --password=root childesdb-0.1.0 < childes-db-version-0.1.0.sql</code></li> (this will take several minutes)
+					<li> Load the sql dump into the database with <code>mysql --host=127.0.0.1 --port 8889 --user=root --password=root childesdb < childes-db-version-0.1.0.sql</code></li> (this will take several minutes)
 					<li> refer to the documentation for <code>childesr</code> regarding how to use a local database server
-					</ol>
+					</ul>
 
-			</div>			
+			</div>
 		</div>
 		<!--end: Row-->
 
 	</div>
 	<!--end: Container-->
 </div>
-{% include footer.html %}	
+{% include footer.html %}
