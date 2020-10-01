@@ -22,7 +22,7 @@ title: childes-db Releases
 
 
 				<ul>
-					<li><a href="http://childes-db-archive.s3.amazonaws.com/childes-db-version-0.1.0.sql.gz">childes-db-version-0.1.0</a></li>
+					<li><a href="http://childes-db-archive.s3.amazonaws.com/childes-db-version-0.1.2.sql.gz">childes-db-version-0.1.2</a></li>
 				</ul>
 
 
@@ -33,13 +33,13 @@ title: childes-db Releases
 				<p>To use the .sql file you will need to have a working version of MySQL server and a client. We recommend <a href="https://www.mamp.info/en/">MAMP</a> and <a href="https://www.sequelpro.com">SequelPro</a> as easy-to-use server and client software. Loading the database from the .sql file is fastest and easiest from the command line client. Remember to replace the name of the .sql file with the filename you downloaded.</p>
 					<ul>
 					<li>
-					If your browser did not automatically unzip the .sql.gz file, unzip it with <code>gunzip childes-db-version-0.1.0.sql.gz</code></li>
+					If your browser did not automatically unzip the .sql.gz file, unzip it with <code>gunzip childes-db-version-0.1.2.sql.gz</code></li>
 					<li> Then from the same directory with the uncompressed .sql file, connect to MySQL: <code>mysql --host=127.0.0.1 --port 8889 --user=root --password=root</code> (assumes default MAMP credentials)</li>
 					<li> Note that if you get a "command not found error", you may need to use MAMP to start your MySQL server running and add the MAMP application to your path, e.g. by adding this line to you <code>.bashrc</code> file in your home directory:<br>
 						<code>export PATH="/Applications/MAMP/Library/bin:$PATH"</code> </li>
 					<li> From within the MySQL console, create the database: <code>create database childesdb</code></li>
 					<li> Quit the MySQL console with <code>\q</code></li>
-					<li> Load the sql dump into the database with <code>mysql --host=127.0.0.1 --port 8889 --user=root --password=root childesdb < childes-db-version-0.1.0.sql</code></li> (this will take several minutes)
+					<li> Load the sql dump into the database with <code>mysql --host=127.0.0.1 --port 8889 --user=root --password=root childesdb < childes-db-version-0.1.2.sql</code></li> (this will take several minutes)
 					<li> refer to the documentation for <code>childesr</code> regarding how to use a local database server
 					</ul>
 
