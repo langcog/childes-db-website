@@ -13,36 +13,74 @@ title: childes-db Releases
 		<div class="hero-unit">
 
 			<div class="row">
-				<p><code>childes-db</code> will be updated every 6 months with a most recent parse of the CHILDES database, reflecting the addition of new corpora and the revision of older annotations (more details can be found in the <a href="docs.html">documentation</a>). Visualizations and the childesr package will always use the most recent database version by default. The primary method of interacting with childes-db, the R API <code>childesr</code>, can be directed to use any recent database version by using the <code>version</code> parameter. We provide here compressed .sql files for users wanting to refer to older releases or to install the database locally.</p>
+				<p><code>childes-db</code> will be updated every year with a most recent parse of the CHILDES database to reflect new corpora and to revise existing annotations (more details can be found in the <a href="docs.html">documentation</a>). These releases may also include new features (e.g., 2020.1 introduces phonological transcriptions for datasets in Phonbank). Visualizations and the childesr package will always use the most recent database version by default. The R API <code>childesr</code> and the Python API <code>childespy</code> can be directed to use any recent database version by using the <code>version</code> parameter.</p>
 			</div>
+			<center>
+			<div class="row">
+				<table style="width:60%">				  
+				  <tr>
+				  	<td><h4 style="color:red;">2018.1 </h4><a name="2018.1"></a></td>
+				  	<td>  &nbsp;&nbsp;&nbsp;</td>
+				    <td>Initial release</td>
+				  </tr>
+				  <tr>
+				    <td><h4 style="color:red;">2019.1 </h4><a name="2019.1"></a></td>	
+				    <td>  </td>		
+				    <td> Re-parsed to reflect 2019 changes in CHILDES. Note that this excludes key datasets like Providence which were moved to Phonbank.</td>	    
+				  </tr>
+				  <tr>
+				    <td><h4 style="color:red;">2020.1 </h4><a name="2020.1"></a></td>
+				    <td>  </td>
+				    <td>Re-parsed to reflect 2020 changes in CHILDES, as well as the 2020 verison of Phonbank.</td>
+				  </tr>
+				</table>
+			</div>
+			</center>
+		</div>
+			
+		<h2>Using childes-db Locally</h2>
+		<div class="hero-unit">
+			
+			<div class="row">				
+				<p>
+				For intensive use cases, e.g. repeatedly transferring more than 5 GB of data, users may wish to download one or more 
+				yearly releases of the database for installation on a local MySQL server (either on their own machine or a machine on their local network). The release databases can be downloaded <code>mysqldump</code> command:
+				</p>
+				 <p><code> mysqldump -h $HOST_FROM_JSON -u $USER_FROM_JSON -p$PASSWORD_FROM_JSON --databases $DATABASES | mysql -u $LOCAL_USER -p$LOCAL_PASSWORD</code></p>
+				<p>
+					The first part of this command (<code>mysqldump</code>) outputs the content of the database as a text stream of SQL statements. The second part reads it into end-user's local MySQL server. Each yearly release is around 40 GB in size.
+					We leave it as an exercise to the reader to replace the variables above (such as <code>$HOSTNAME</code>) with the correct values from the the JSON file that is used by the R and Python APIs to coordinate and authorize MySQL access, <a href="childes-db.json"> childes-db.json</a>. The corresponence between variables is as follows:
+				</p>
+			</div>
+			<center>
+			<div class="row">
+				<table style="width:60%">				  
+				  <tr>
+				    <td>$HOST_FROM_JSON</td><td>"host" field in JSON</td>
+				  </tr>
+				  <tr>
+				    <td>$USER_FROM_JSON</td><td>"user" field in JSON</td>
+				  </tr>
+				  <tr>
+				    <td>$PASSWORD_FROM_JSON</td><td>"password" in JSON</td>
+				  </tr>
+				  <tr>
+				    <td>$DATABASES</td><td>{2020.1, 2019.1, 2018.1}</td>
+				  </tr>
+				  <tr>
+				    <td>$LOCAL_USER</td><td>Local MySQL user (possibly <i>root</i>)</td>
+				  </tr>
+				  <tr>
+				    <td>$LOCAL_PASSWORD</td><td>Local MySQL password for user </td>
+				  </tr>
+				</table>
+				<br /><br />
+			</div>
+			</center>
+			
 
 			<div class="row">
-
-
-
-
-				<ul>
-					<li><a href="http://childes-db-archive.s3.amazonaws.com/childes-db-version-0.1.0.sql.gz">childes-db-version-0.1.0</a></li>
-				</ul>
-
-
-
-			</div>
-
-			<div class="row">
-				<p>To use the .sql file you will need to have a working version of MySQL server and a client. We recommend <a href="https://www.mamp.info/en/">MAMP</a> and <a href="https://www.sequelpro.com">SequelPro</a> as easy-to-use server and client software. Loading the database from the .sql file is fastest and easiest from the command line client. Remember to replace the name of the .sql file with the filename you downloaded.</p>
-					<ul>
-					<li>
-					If your browser did not automatically unzip the .sql.gz file, unzip it with <code>gunzip childes-db-version-0.1.0.sql.gz</code></li>
-					<li> Then from the same directory with the uncompressed .sql file, connect to MySQL: <code>mysql --host=127.0.0.1 --port 8889 --user=root --password=root</code> (assumes default MAMP credentials)</li>
-					<li> Note that if you get a "command not found error", you may need to use MAMP to start your MySQL server running and add the MAMP application to your path, e.g. by adding this line to you <code>.bashrc</code> file in your home directory:<br>
-						<code>export PATH="/Applications/MAMP/Library/bin:$PATH"</code> </li>
-					<li> From within the MySQL console, create the database: <code>create database childesdb</code></li>
-					<li> Quit the MySQL console with <code>\q</code></li>
-					<li> Load the sql dump into the database with <code>mysql --host=127.0.0.1 --port 8889 --user=root --password=root childesdb < childes-db-version-0.1.0.sql</code></li> (this will take several minutes)
-					<li> refer to the documentation for <code>childesr</code> regarding how to use a local database server
-					</ul>
-
+				<p>Once you have a local MySQL installation, refer to the documentation for <code>childesr</code> or <code>childespy</code> regarding how to use a local database server. For most uses cases, using the API with the default remote server (hosted on Amazon on EC2) should be sufficient.</p>
 			</div>
 		</div>
 		<!--end: Row-->

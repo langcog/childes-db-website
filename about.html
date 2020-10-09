@@ -10,23 +10,31 @@ title: About childes-db
 
 <div class="hero-unit">
 	<p>
-		The <code>childes-db</code> project aims to make CHILDES transcripts more accessible by reducing the amount of preprocessing necessary (e.g., CLAN or specific preprocessing libraries) and by making the individual tokens and utterances available in a tidy, tabular format. In addition, we plan to release new dated versions periodically to facilitate reproducibility. We are also supporting an API via the <code>childesr</code> R package, which allows users to access the transcripts in <code>childes-db</code> without having to write complex SQL queries.
+		The <code>childes-db</code> project aims to make <a href="https://childes.talkbank.org">CHILDES</a> transcripts more accessible by reducing the amount of preprocessing (e.g., CLAN or specific preprocessing libraries) and by making the individual tokens, utterances, transcripts, and corpora available in a tidy, tabular format that is accessible across programming languages. We release new versions of this dataset periodically to facilitate reproducibility. We also provide an R package (<a href="https://cran.r-project.org/web/packages/childesr/childesr.pdf">childesr</a>) and a Python package (<a href="https://pypi.org/project/childespy/">childespy</a>) which allow users to access this database without having to write complex SQL queries. 
 	</p>
 	<br/>
+</div>
 
+<div class="hero-unit">
 	<h3>Citation policy</h3> <br/>
 
 	<p>
 		If you use <code>childes-db</code> to access CHILDES in your research, please note the database version you used (i.e., <code>2018.1</code>) and cite:
 
 		<ol>
-
-		  <li>CHILDES itself – both the database and the corpora you use – following the <a style="color:#3399f3" href="http://talkbank.org/share/rules.html">Talkbank policy</a>.</li>
-		  <li>The <code>childes-db</code> <a style="color:#3399f3" href="https://psyarxiv.com/93mwx">paper</a>:</li>
-		</ol> 
-			<blockquote>
-			Sanchez, A., Meylan, S., Braginsky, M., MacDonald, K. E., Yurovsky, D., & Frank, M. C. (2018, April 23). childes-db: a flexible and reproducible interface to the Child Language Data Exchange System. Retrieved from psyarxiv.com/93mwx
+		  
+		  <li><a style="color:#3399f3" href="https://link.springer.com/article/10.3758/s13428-018-1176-7"> The <code>childes-db</code> paper in <i>Behavior Research Methods</i></a>:
+		  		<blockquote>
+			<sup>*</sup>Sanchez, A., <sup>*</sup>Meylan, S.C., Braginsky, M., MacDonald, K. E., Yurovsky, D., & Frank, M. C. (2019). "childes-db: a flexible and reproducible interface to the Child Language Data Exchange System."
+			<i>Behavior Research Methods</i> 51 (4), 1928–1941.
 			</blockquote>
+			<sup>*</sup> indicates co-first authorship.
+
+		  </li>
+		  <li>CHILDES itself – both the database and the corpora you use – following the <a style="color:#3399f3" href="http://talkbank.org/share/rules.html">Talkbank policy</a>.</li>
+
+		</ol> 
+		
 	</p>
 </div>
 
@@ -49,16 +57,30 @@ title: About childes-db
 		<div class="span3">
 
 			<div class="thumbnail">
-		            <a href="https://github.com/amsan7" target="_blank">
-		                <img src="img/headshots/alessandro.jpg">
+		            <a href="http://stephanmeylan.com/" target="_blank">
+		                <img src="img/headshots/stephan.jpg">
 		            </a>
 		            <div class="caption">
-		                <h4><a href="https://github.com/amsan7" target="_blank">Alessandro Sanchez</a></h4>
-		                <p>Stanford University</p>
+		                <h4> <a href="http://stephanmeylan.com/" target="_blank">Stephan Meylan</a></h4>
+		                <p>MIT & Duke University</p>
 		            </div>
 			</div>
 
 		</div>
+
+		<div class="span3">
+				<div class="thumbnail">
+		            	<a href="https://mikabr.github.io" target="_blank">
+		                	<img src="img/headshots/mika.jpg">
+		            	</a>
+		            	<div class="caption">
+		                	<h4><a href="https://mikabr.github.io" target="_blank">Mika Braginsky</a></h4>
+		                <p>MIT</p>
+		            	</div>
+				 </div>
+		</div>
+
+		
 
 		<div class="span3">
 			<div class="thumbnail">
@@ -72,19 +94,7 @@ title: About childes-db
 	        </div>
 		</div>
 
-		<div class="span3">
-
-			<div class="thumbnail">
-		            <a href="http://stephanmeylan.com/" target="_blank">
-		                <img src="img/headshots/stephan.jpg">
-		            </a>
-		            <div class="caption">
-		                <h4> <a href="http://stephanmeylan.com/" target="_blank">Stephan Meylan</a></h4>
-		                <p>UC Berkeley</p>
-		            </div>
-			</div>
-
-		</div>
+		
 
 	<!-- Could add a "contact us" option here -->
 
@@ -97,17 +107,6 @@ title: About childes-db
 
 	<div class="row">
 
-	<div class="span3">
-				<div class="thumbnail">
-		            	<a href="https://mikabr.github.io" target="_blank">
-		                	<img src="img/headshots/mika.jpg">
-		            	</a>
-		            	<div class="caption">
-		                	<h4><a href="https://mikabr.github.io" target="_blank">Mika Braginsky</a></h4>
-		                <p>MIT</p>
-		            	</div>
-				 </div>
-		</div>
 
 		<div class="span3">
 
@@ -131,7 +130,7 @@ title: About childes-db
 		            </a>
 		            <div class="caption">
 		                <h4><a href="https://kemacdonald.github.io/" target="_blank">Kyle MacDonald</a></h4>
-		                <p>Stanford University</p>
+		                <p>UCLA</p>
 		            </div>
 			</div>
 		</div>
@@ -139,12 +138,33 @@ title: About childes-db
 		</div>
 
 
+			<div class="row">
+			<!-- start: About CHILDES -->
+			<div class="span6">
+				<div id="about">
+					<div class="title"><h3>childes-db alumni</h3></div>
+				</div>
+			</div>
 	</div>
-							
 
+	<!--start: First Row of photos -->
 
+	<br>
 
-			</div>	
+	<div class="row">
+
+		<div class="span3">
+
+			<div class="thumbnail">
+		            <a href="https://github.com/amsan7" target="_blank">
+		                <img src="img/headshots/alessandro.jpg">
+		            </a>
+		            <div class="caption">
+		                <h4><a href="https://github.com/amsan7" target="_blank">Alessandro Sanchez</a></h4>
+		                <p>Stanford University</p>
+		            </div>
+			</div>		
+
 			<!-- end: About CHILDES -->				
 			
 		</div>	
