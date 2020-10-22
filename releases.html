@@ -46,7 +46,10 @@ title: childes-db Releases
 				For intensive use cases, e.g. repeatedly transferring more than 5 GB of data, users may wish to download one or more 
 				yearly releases of the database for installation on a local MySQL server (either on their own machine or a machine on their local network). The release databases can be downloaded <code>mysqldump</code> command:
 				</p>
-				 <p><code> mysqldump -h $HOST_FROM_JSON -u $USER_FROM_JSON -p$PASSWORD_FROM_JSON --databases $DATABASES | mysql -u $LOCAL_USER -p$LOCAL_PASSWORD</code></p>
+				<p><code>mysqldump -v -u $USER_FROM_JSON -p$PASSWORD_FROM_JSON -h $HOST_FROM_JSON --single-transaction --no-tablespaces -C --quick --databases $DATABASES | mysql -u $LOCAL_USER -p$LOCAL_PASSWORD</code></p>
+				Depending on your <code>mysqlclient</code> version, you might have to add the <code>--column-statistics=0</code> option.
+
+
 				<p>
 					The first part of this command (<code>mysqldump</code>) outputs the content of the database as a text stream of SQL statements. The second part reads it into end-user's local MySQL server. Each yearly release is around 40 GB in size.
 					We leave it as an exercise to the reader to replace the variables above (such as <code>$HOSTNAME</code>) with the correct values from the the JSON file that is used by the R and Python APIs to coordinate and authorize MySQL access, <a href="childes-db.json"> childes-db.json</a>. The corresponence between variables is as follows:

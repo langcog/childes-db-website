@@ -3,7 +3,7 @@ layout: null
 ---
 
 {
-	"host":"ec2-54-68-171-132.us-west-2.compute.amazonaws.com",
+	"host":"ec2-34-212-148-26.us-west-2.compute.amazonaws.com",
 	"current":"2018.1",
 	"supported": ["2018.1","2019.1","2020.1", "childes_db_dev"],
 	"historical":[],
