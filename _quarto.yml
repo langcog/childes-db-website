@@ -17,6 +17,8 @@ website:
     left:
       - text: Analyses
         menu:
+          - href: frequency.qmd
+            text: Frequency Counts
           - href: derived-measures.qmd
             text: Derived Measures
           - href: population.qmd
