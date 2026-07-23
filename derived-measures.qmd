@@ -11,6 +11,7 @@ statistics are binned and averaged in your browser.
 {{< include components/_loess.qmd >}}
 {{< include components/_download.qmd >}}
 {{< include components/_style.qmd >}}
+{{< include components/_interval.qmd >}}
 
 ```{ojs setup-dm}
 //| output: false
@@ -70,8 +71,7 @@ viewof dm_roles = Inputs.select(dm_role_options, {
   value: dm_default_roles
 })
 viewof dm_measure = Inputs.select(measure_options, { label: "Measure" })
-viewof dm_age_min = Inputs.range([0, 18], { label: "Min age (years)", step: 0.5, value: 0 })
-viewof dm_age_max = Inputs.range([0, 18], { label: "Max age (years)", step: 0.5, value: 18 })
+viewof dm_ages = interval([0, 18], { step: 0.5, value: [0, 18], label: "Ages (years)" })
 viewof dm_binwidth = Inputs.range([1, 12], { label: "Bin width (months)", step: 1, value: 2 })
 ```
 
@@ -90,8 +90,8 @@ viewof dm_binwidth = Inputs.range([1, 12], { label: "Bin width (months)", step: 
 dm_filtered = {
   const corpus_set = new Set(dm_corpora);
   const role_set = new Set(dm_roles);
-  const lo = Math.min(dm_age_min, dm_age_max) * 12;
-  const hi = Math.max(dm_age_min, dm_age_max) * 12;
+  const lo = dm_ages[0] * 12;
+  const hi = dm_ages[1] * 12;
   return dm_slice
     .filter((d) =>
       corpus_set.has(d.corpus_name) &&

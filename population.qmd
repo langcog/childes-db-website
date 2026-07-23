@@ -10,6 +10,7 @@ colored by corpus — a quick way to see what data exist for a collection.
 {{< include components/_loess.qmd >}}
 {{< include components/_download.qmd >}}
 {{< include components/_style.qmd >}}
+{{< include components/_interval.qmd >}}
 
 ```{ojs setup-pop}
 //| output: false
@@ -60,8 +61,7 @@ viewof pop_roles = Inputs.select(pop_role_options, {
   value: pop_default_roles
 })
 viewof pop_measure = Inputs.select(pop_measure_options, { label: "Measure" })
-viewof pop_age_min = Inputs.range([0, 18], { label: "Min age (years)", step: 0.5, value: 0 })
-viewof pop_age_max = Inputs.range([0, 18], { label: "Max age (years)", step: 0.5, value: 18 })
+viewof pop_ages = interval([0, 18], { step: 0.5, value: [0, 18], label: "Ages (years)" })
 ```
 
 :::
@@ -80,8 +80,8 @@ viewof pop_age_max = Inputs.range([0, 18], { label: "Max age (years)", step: 0.5
 pop_rows = {
   const corpus_set = new Set(pop_corpora);
   const role_set = new Set(pop_roles);
-  const lo = Math.min(pop_age_min, pop_age_max) * 12;
-  const hi = Math.max(pop_age_min, pop_age_max) * 12;
+  const lo = pop_ages[0] * 12;
+  const hi = pop_ages[1] * 12;
   const kept = pop_slice.filter((d) =>
     corpus_set.has(d.corpus_name) &&
     role_set.has(d.speaker_role) &&
