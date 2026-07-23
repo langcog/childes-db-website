@@ -1,0 +1,44 @@
+---
+title: "Documentation"
+---
+
+## Codebase and issue tracking
+
+`childes-db` is all open source and under active development. If you run into
+an issue, please file it on the GitHub issue tracker of the appropriate
+repository:
+
+- Database and extraction method:
+  [github.com/langcog/childes-db](https://github.com/langcog/childes-db)
+- R package: [github.com/langcog/childesr](https://github.com/langcog/childesr)
+- Python package: [github.com/langcog/childespy](https://github.com/langcog/childespy)
+- Website frontend:
+  [github.com/langcog/childes-db-website](https://github.com/langcog/childes-db-website)
+
+If you have questions about `childes-db` or want to stay updated on changes to
+the database, visualizations, or API, join our announcement
+[mailing list](https://mailman.stanford.edu/mailman/listinfo/childes-db), or
+email us at childes-db-contact (at) stanford (dot) edu.
+
+## Treatment of CHAT format
+
+The `childes-db` project stores CHILDES data in a relational database. The
+original CHAT files were converted to XML via chatter, a cross-platform
+application provided by TalkBank. The XML files were then parsed in Python and
+imported into a MySQL database through Django. The annotations and markers
+from the original CHAT files that are preserved in `childes-db` are listed in
+the table below:
+
+```{=html}
+<iframe style="border:none; width:100%; height:800px"
+  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQdH8c2b-GJB_Aj2ywVVg0IqqyJIDG9ZYHxDlmVSA_CRL6rprzziT7EXzOiIH2dDo8cHCPNK4zkX9CW/pubhtml?gid=0&single=true&widget=true&headers=false"></iframe>
+```
+
+## Database versioning
+
+One of the principal design goals for `childes-db` is to ensure
+reproducibility in analyses. The database is versioned, and both the API and
+the visualizations report the database version for each analysis. We recommend
+that authors report both with their analyses. To reproduce an earlier
+analysis, previous [releases](data.html) of the database are directly
+accessible through both the R and Python APIs.

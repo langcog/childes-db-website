@@ -1,0 +1,192 @@
+---
+title: "Derived Measures"
+---
+
+Explore how measures of linguistic productivity and lexical diversity change
+with age, for both children and their conversational partners. Pick a
+collection, then filter by corpus and speaker role — transcript-level
+statistics are binned and averaged in your browser.
+
+{{< include components/_load.qmd >}}
+{{< include components/_loess.qmd >}}
+{{< include components/_download.qmd >}}
+{{< include components/_style.qmd >}}
+
+```{ojs setup-dm}
+//| output: false
+measure_options = new Map([
+  ["MLU-w (mean length of utterance in words)", "mlu_w"],
+  ["MLU-m (mean length of utterance in morphemes)", "mlu_m"],
+  ["TTR (type-token ratio)", "ttr"],
+  ["MTLD (measure of textual lexical diversity)", "mtld"],
+  ["HD-D (lexical diversity via hypergeometric distribution)", "hdd"]
+])
+
+measure_label = (key) =>
+  [...measure_options].find(([, v]) => v === key)?.[0] ?? key
+```
+
+:::: {.viz-layout}
+
+::: {.viz-sidebar}
+
+```{ojs inputs-dm-collection}
+viewof dm_collection = Inputs.select(collection_names, {
+  label: "Collection",
+  value: "Eng-NA"
+})
+```
+
+```{ojs dm-slice}
+//| output: false
+// lazy load: fetch only the selected collection's speaker statistics
+dm_slice = d3.json(`slices/speaker_stats/${collection_slug(dm_collection)}.json`)
+  .then(unpack)
+
+dm_corpus_options = [...new Set(
+  corpora_all
+    .filter((d) => d.collection_name === dm_collection)
+    .map((d) => d.name)
+)].sort()
+
+// roles present in this collection, most common first
+dm_role_options = d3.groupSort(dm_slice, (v) => -v.length, (d) => d.speaker_role)
+
+dm_default_roles = {
+  const present = ["Target_Child", "Mother"].filter((r) => dm_role_options.includes(r));
+  return present.length ? present : dm_role_options.slice(0, 1);
+}
+```
+
+```{ojs inputs-dm-rest}
+viewof dm_corpora = Inputs.select(dm_corpus_options, {
+  label: "Corpora",
+  multiple: 8,
+  value: dm_corpus_options
+})
+viewof dm_roles = Inputs.select(dm_role_options, {
+  label: "Speaker roles",
+  multiple: 6,
+  value: dm_default_roles
+})
+viewof dm_measure = Inputs.select(measure_options, { label: "Measure" })
+viewof dm_age_min = Inputs.range([0, 18], { label: "Min age (years)", step: 0.5, value: 0 })
+viewof dm_age_max = Inputs.range([0, 18], { label: "Max age (years)", step: 0.5, value: 18 })
+viewof dm_binwidth = Inputs.range([1, 12], { label: "Bin width (months)", step: 1, value: 2 })
+```
+
+:::
+
+::: {.viz-main}
+
+{{< include components/_spinner.qmd >}}
+
+::: {.panel-tabset}
+
+## Plot
+
+```{ojs dm-data}
+//| output: false
+dm_filtered = {
+  const corpus_set = new Set(dm_corpora);
+  const role_set = new Set(dm_roles);
+  const lo = Math.min(dm_age_min, dm_age_max) * 12;
+  const hi = Math.max(dm_age_min, dm_age_max) * 12;
+  return dm_slice
+    .filter((d) =>
+      corpus_set.has(d.corpus_name) &&
+      role_set.has(d.speaker_role) &&
+      d.age != null && d.age >= lo && d.age <= hi)
+    .map((d) => ({
+      ...d,
+      value: dm_measure === "ttr"
+        ? (d.num_tokens > 0 ? d.num_types / d.num_tokens : null)
+        : d[dm_measure]
+    }))
+    // MTLD and HD-D are undefined for speakers with < 50 tokens; drop nulls
+    .filter((d) => d.value != null && Number.isFinite(d.value));
+}
+
+dm_binned = {
+  const bw = dm_binwidth;
+  const out = [];
+  for (const [role, byRole] of d3.groups(dm_filtered, (d) => d.speaker_role)) {
+    for (const [bin, cell] of d3.groups(byRole, (d) => Math.floor(d.age / bw))) {
+      out.push({
+        speaker_role: role,
+        measure: dm_measure,
+        age: bin * bw + bw / 2,
+        mean: d3.mean(cell, (d) => d.value),
+        n_transcripts: cell.length,
+        n_utterances: d3.sum(cell, (d) => d.num_utterances)
+      });
+    }
+  }
+  return out.sort((a, b) =>
+    d3.ascending(a.speaker_role, b.speaker_role) || d3.ascending(a.age, b.age));
+}
+
+dm_plot_roles = [...new Set(dm_binned.map((d) => d.speaker_role))]
+```
+
+```{ojs dm-plot}
+{
+  clear_loading();
+  if (!dm_binned.length) {
+    return html`<em>No data for this selection — try widening the age range
+      or adding corpora / speaker roles.</em>`;
+  }
+  const smooth = loess_series(dm_binned, "speaker_role",
+    { x: "age", y: "mean", w: "n_utterances" });
+  return Plot.plot({
+    style: { fontFamily: "var(--sans-serif)", fontSize: "13px" },
+    width: 850,
+    height: 500,
+    inset: 8,
+    grid: true,
+    x: { label: "Target child age (months)", tickFormat: "d", line: true },
+    y: { label: measure_label(dm_measure), line: true },
+    color: { legend: true, domain: dm_plot_roles },
+    r: { range: [2, 10], label: "Utterances" },
+    marks: [
+      Plot.lineY(smooth, {
+        x: "age", y: "mean", stroke: "speaker_role", strokeWidth: 2.5
+      }),
+      Plot.dot(dm_binned, {
+        x: "age", y: "mean", r: "n_utterances", fill: "speaker_role",
+        fillOpacity: 0.6,
+        channels: { n_transcripts: "n_transcripts", n_utterances: "n_utterances" },
+        tip: true
+      })
+    ]
+  });
+}
+```
+
+Points are age-bin means; point area is proportional to the total number of
+utterances in the bin. Curves are LOESS smooths weighted by utterance count.
+
+## Table
+
+```{ojs dm-table}
+Inputs.table(dm_binned, { maxWidth: 900 })
+```
+
+```{ojs dm-download}
+download_csv(dm_binned,
+  `childes_derived_${collection_slug(dm_collection)}_${dm_measure}.csv`)
+```
+
+:::
+
+::: {.callout-note}
+Measures are computed per speaker per transcript in childes-db 2021.1:
+MLU in words and morphemes, type-token ratio (types / tokens), and the
+lexical-diversity measures MTLD and HD-D (only defined for speakers who
+produced at least 50 tokens in a transcript). Ages are converted from days to
+months as in `childesr`.
+:::
+
+:::
+
+::::
