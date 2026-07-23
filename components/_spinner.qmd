@@ -1,0 +1,12 @@
+```{=html}
+<div class="cdb-loading" id="cdb-loading">
+  <div class="cdb-spinner"></div>
+  Loading data — the first load can take a few seconds…
+</div>
+```
+
+```{ojs spinner-helper}
+//| output: false
+// call once the first visualization has rendered
+clear_loading = () => document.getElementById("cdb-loading")?.remove()
+```

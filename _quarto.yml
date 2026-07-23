@@ -1,0 +1,50 @@
+project:
+  title: "childes-db"
+  type: website
+  render:
+    - "*.qmd"
+  resources:
+    - "slices/**"
+    - "data/**"
+    - "childes-db.json"
+
+website:
+  title: childes-db
+  favicon: images/childes-db.png
+  navbar:
+    logo: images/childes-db.png
+    title: childes-db
+    left:
+      - text: Analyses
+        menu:
+          - href: derived-measures.qmd
+            text: Derived Measures
+          - href: population.qmd
+            text: Population
+      - href: data.qmd
+        text: Data
+      - href: docs.qmd
+        text: Docs
+      - href: about.qmd
+        text: About
+  page-footer:
+    center: |
+      childes-db is a project of the [Language and Cognition Lab](https://langcog.stanford.edu/) and collaborators.
+      Data are from [CHILDES](https://childes.talkbank.org/); please follow the
+      [TalkBank citation rules](https://talkbank.org/share/citation.html).
+
+format:
+  html:
+    theme: [cosmo, theme.scss]
+    mainfont: "Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontsize: 15px
+    grid:
+      sidebar-width: 0px
+      body-width: 1200px
+      margin-width: 0px
+
+execute:
+  echo: false
+  message: false
+  warning: false
+  error: false
