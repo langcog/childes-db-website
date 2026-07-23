@@ -1,0 +1,142 @@
+[
+ {
+  "name": "Biling",
+  "slug": "biling",
+  "n_corpora": 36,
+  "n_transcripts": 3807,
+  "n_children": 880
+ },
+ {
+  "name": "Celtic",
+  "slug": "celtic",
+  "n_corpora": 4,
+  "n_transcripts": 436,
+  "n_children": 22
+ },
+ {
+  "name": "Chinese",
+  "slug": "chinese",
+  "n_corpora": 21,
+  "n_transcripts": 4140,
+  "n_children": 1249
+ },
+ {
+  "name": "Clinical",
+  "slug": "clinical",
+  "n_corpora": 21,
+  "n_transcripts": 1128,
+  "n_children": 313
+ },
+ {
+  "name": "Clinical-MOR",
+  "slug": "clinical_mor",
+  "n_corpora": 26,
+  "n_transcripts": 3691,
+  "n_children": 518
+ },
+ {
+  "name": "Dutch",
+  "slug": "dutch",
+  "n_corpora": 3,
+  "n_transcripts": 520,
+  "n_children": 20
+ },
+ {
+  "name": "DutchAfrikaans",
+  "slug": "dutchafrikaans",
+  "n_corpora": 9,
+  "n_transcripts": 715,
+  "n_children": 183
+ },
+ {
+  "name": "EastAsian",
+  "slug": "eastasian",
+  "n_corpora": 5,
+  "n_transcripts": 1500,
+  "n_children": 61
+ },
+ {
+  "name": "Eng-NA",
+  "slug": "eng_na",
+  "n_corpora": 52,
+  "n_transcripts": 10396,
+  "n_children": 1116
+ },
+ {
+  "name": "Eng-UK",
+  "slug": "eng_uk",
+  "n_corpora": 12,
+  "n_transcripts": 2494,
+  "n_children": 153
+ },
+ {
+  "name": "French",
+  "slug": "french",
+  "n_corpora": 16,
+  "n_transcripts": 2360,
+  "n_children": 534
+ },
+ {
+  "name": "Frogs",
+  "slug": "frogs",
+  "n_corpora": 32,
+  "n_transcripts": 3628,
+  "n_children": 729
+ },
+ {
+  "name": "German",
+  "slug": "german",
+  "n_corpora": 12,
+  "n_transcripts": 2344,
+  "n_children": 133
+ },
+ {
+  "name": "Japanese",
+  "slug": "japanese",
+  "n_corpora": 12,
+  "n_transcripts": 1475,
+  "n_children": 136
+ },
+ {
+  "name": "Other",
+  "slug": "other",
+  "n_corpora": 37,
+  "n_transcripts": 2377,
+  "n_children": 334
+ },
+ {
+  "name": "Romance",
+  "slug": "romance",
+  "n_corpora": 21,
+  "n_transcripts": 1631,
+  "n_children": 250
+ },
+ {
+  "name": "Scandinavian",
+  "slug": "scandinavian",
+  "n_corpora": 11,
+  "n_transcripts": 1547,
+  "n_children": 424
+ },
+ {
+  "name": "Slavic",
+  "slug": "slavic",
+  "n_corpora": 9,
+  "n_transcripts": 1215,
+  "n_children": 74
+ },
+ {
+  "name": "Spanish",
+  "slug": "spanish",
+  "n_corpora": 21,
+  "n_transcripts": 2006,
+  "n_children": 528
+ },
+ {
+  "name": "XLing",
+  "slug": "xling",
+  "n_corpora": 1,
+  "n_transcripts": 2917,
+  "n_children": 1
+ }
+]
