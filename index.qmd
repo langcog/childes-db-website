@@ -30,25 +30,18 @@ ${site_stats.n_corpora} corpora in ${site_stats.n_collections} collections.</div
 ```
 
 ```{=html}
-<div class="analysis-thumbs" style="margin-top: 1rem">
-  <a href="derived-measures.html">
-    <h4>Derived Measures</h4>
-    <p>How do MLU, TTR, and lexical diversity change with age, for children
-       and their conversational partners?</p>
+<div class="cdb-big-cards">
+  <a href="https://langcog.github.io/childesr/">
+    <div class="cdb-card-title">API Tutorial</div>
+    <p>Get a hands-on walk-through on accessing <code>childes-db</code>
+       through R.</p>
+    <img src="img/code.png" alt="R code accessing childes-db">
   </a>
-  <a href="population.html">
-    <h4>Population Viewer</h4>
-    <p>See what data exist: utterances and tokens per transcript across ages,
-       corpora, and speakers.</p>
-  </a>
-  <a href="data.html">
-    <h4>Data</h4>
-    <p>Database releases and how to access them from R, Python, or SQL.</p>
-  </a>
-  <a href="docs.html">
-    <h4>Docs</h4>
-    <p>How the database is built, how CHAT annotations are treated, and how
-       versioning supports reproducibility.</p>
+  <a href="frequency.html">
+    <div class="cdb-card-title">Visualizations</div>
+    <p>Explore the data in <code>childes-db</code> using our interactive
+       applications.</p>
+    <img src="img/plot.png" alt="Interactive childes-db plot">
   </a>
 </div>
 ```
@@ -70,3 +63,22 @@ For a complete overview along with examples, refer to
 > D., & Frank, M. C. (2019). childes-db: A flexible and reproducible interface
 > to the Child Language Data Exchange System. *Behavior Research Methods, 51*(4),
 > 1928–1941. (\* indicates co-first authorship)
+
+```{=html}
+<div class="cdb-release-bar">
+  <h3>New in 2026.1
+    <span class="cdb-release-badge">release candidate — coming soon</span></h3>
+  <ul>
+    <li><strong>More data:</strong> 24.2 million utterances (+24%) and 89
+      million tokens, including ~73 corpora new to childes-db.</li>
+    <li><strong>New annotation tiers:</strong> Universal Dependencies
+      morphology (with a morpheme-level table) and dependency parses, Japanese
+      romanization, speech acts, and phonology.</li>
+    <li><strong>Redivis-hosted, versioned data:</strong> every release
+      browsable, queryable, and downloadable on
+      <a href="data.html">Redivis</a>.</li>
+    <li><strong>Corrected child identities:</strong> target-child identities
+      corrected across corpora (Day corrections).</li>
+  </ul>
+</div>
+```

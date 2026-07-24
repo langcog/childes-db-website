@@ -28,7 +28,7 @@ database version you used (e.g., `2021.1`) and cite:
 2. CHILDES itself — both the database and the corpora you use — following the
    [TalkBank policy](https://talkbank.org/share/citation.html).
 
-## Meet the childes-db team
+## Contributors
 
 ::: {.team-grid}
 
@@ -63,12 +63,6 @@ Carnegie Mellon University
 ![](images/headshots/kyle.jpg)
 [**Kyle MacDonald**](https://kemacdonald.github.io/)
 UCLA
-
-:::
-
-## childes-db alumni
-
-::: {.team-grid}
 
 ![](images/headshots/alessandro.jpg)
 [**Alessandro Sanchez**](https://github.com/amsan7)
