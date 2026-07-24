@@ -1,0 +1,55 @@
+```{ojs duckdb-setup}
+//| output: false
+// DuckDB-WASM is imported only on pages that include this component, and only
+// initialized on first use; the first query therefore takes ~10 s (wasm
+// download + init). Shared by frequency.qmd and bigrams.qmd — same code, so
+// the browser caches the wasm bundle across pages within a session.
+duckdb = import("https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm")
+
+db = {
+  const bundle = await duckdb.selectBundle(duckdb.getJsDelivrBundles());
+  const worker = await duckdb.createWorker(bundle.mainWorker);
+  const database = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), worker);
+  await database.instantiate(bundle.mainModule, bundle.pthreadWorker);
+  return database;
+}
+conn = db.connect()
+registered = new Set()
+
+sql = async (q) => (await (await conn).query(q)).toArray().map((r) => ({ ...r.toJSON() }))
+quote_list = (xs) => xs.map((x) => `'${String(x).replace(/'/g, "''")}'`).join(", ")
+
+// fetch and register a parquet file's bytes once (virtual name = its site
+// path, so freq and bigram shards never collide); buffers cached across
+// queries. Returns the name to use in read_parquet().
+register_parquet = async (dir, fname) => {
+  const vname = `${dir}/${fname}`;
+  if (!registered.has(vname)) {
+    const buf = new Uint8Array(
+      await fetch(vname).then((r) => {
+        if (!r.ok) throw new Error(`failed to fetch ${vname}`);
+        return r.arrayBuffer();
+      }));
+    await (await db).registerFileBuffer(vname, buf);
+    registered.add(vname);
+  }
+  return vname;
+}
+```
+
+```{ojs duckdb-hash-fns}
+//| output: false
+// gloss -> shard hashing; MUST match norm_gloss()/fnv1a() in
+// etl/write_freq_shards.py (also used by etl/write_bigram_shards.py). Each
+// page asserts its slices' hash_check.json test vectors against these.
+normGloss = (s) => s.normalize("NFC").toLowerCase()
+
+fnv1a = (s) => {
+  let h = 0x811c9dc5;
+  for (const b of new TextEncoder().encode(s)) {
+    h ^= b;
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h >>> 0;
+}
+```

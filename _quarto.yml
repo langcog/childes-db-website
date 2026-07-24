@@ -19,6 +19,8 @@ website:
         menu:
           - href: frequency.qmd
             text: Frequency Counts
+          - href: bigrams.qmd
+            text: Bigram Browser
           - href: derived-measures.qmd
             text: Derived Measures
           - href: population.qmd

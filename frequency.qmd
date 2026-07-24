@@ -12,59 +12,19 @@ over all utterances attributed to a speaker, matched case-insensitively.
 {{< include components/_download.qmd >}}
 {{< include components/_style.qmd >}}
 {{< include components/_interval.qmd >}}
+{{< include components/_duckdb.qmd >}}
 
 ```{ojs setup-fq}
 //| output: false
-// DuckDB-WASM is imported only on this page, and only initialized on first
-// use; the first query therefore takes ~10 s (wasm download + init)
-duckdb = import("https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm")
-
-db = {
-  const bundle = await duckdb.selectBundle(duckdb.getJsDelivrBundles());
-  const worker = await duckdb.createWorker(bundle.mainWorker);
-  const database = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), worker);
-  await database.instantiate(bundle.mainModule, bundle.pthreadWorker);
-  return database;
-}
-conn = db.connect()
-registered = new Set()
-
-sql = async (q) => (await (await conn).query(q)).toArray().map((r) => ({ ...r.toJSON() }))
-quote_list = (xs) => xs.map((x) => `'${String(x).replace(/'/g, "''")}'`).join(", ")
-
-// fetch and register a shard's bytes once; buffers are cached across queries
-register_shard = async (s) => {
-  const fname = `shard-${s}.parquet`;
-  if (!registered.has(fname)) {
-    const buf = new Uint8Array(
-      await fetch(`slices/freq/${fname}`).then((r) => {
-        if (!r.ok) throw new Error(`failed to fetch ${fname}`);
-        return r.arrayBuffer();
-      }));
-    await (await db).registerFileBuffer(fname, buf);
-    registered.add(fname);
-  }
-  return fname;
-}
+register_shard = (s) => register_parquet("slices/freq", `shard-${s}.parquet`)
 ```
 
 ```{ojs hash-fq}
 //| output: false
-// gloss -> shard hashing; MUST match norm_gloss()/fnv1a() in
-// etl/write_freq_shards.py. hash_check.json carries build-time test vectors;
-// any drift throws here, which surfaces as a visible cell error on the page
-// (rather than silently querying the wrong shard and returning nothing).
-normGloss = (s) => s.normalize("NFC").toLowerCase()
-
-fnv1a = (s) => {
-  let h = 0x811c9dc5;
-  for (const b of new TextEncoder().encode(s)) {
-    h ^= b;
-    h = Math.imul(h, 0x01000193) >>> 0;
-  }
-  return h >>> 0;
-}
-
+// hash_check.json carries build-time test vectors for the gloss -> shard
+// hashing (normGloss/fnv1a, components/_duckdb.qmd); any drift throws here,
+// which surfaces as a visible cell error on the page (rather than silently
+// querying the wrong shard and returning nothing).
 hash_check = FileAttachment("slices/freq/hash_check.json").json()
 
 hash_ok = {

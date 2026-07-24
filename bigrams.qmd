@@ -1,0 +1,243 @@
+---
+title: "Bigram Browser"
+---
+
+What words appear next to a given word in speech to and from children? Type a
+word, pick a collection, and see the words that most often occur immediately
+before and after it, split by corpus and speaker role. Counts are
+case-insensitive and come from adjacent word pairs within utterances.
+
+{{< include components/_load.qmd >}}
+{{< include components/_download.qmd >}}
+{{< include components/_style.qmd >}}
+{{< include components/_duckdb.qmd >}}
+
+```{ojs setup-bg}
+//| output: false
+bg_register_shard = (s) => register_parquet("slices/bigrams", `shard-${s}.parquet`)
+```
+
+```{ojs hash-bg}
+//| output: false
+// build-time test vectors for the anchor -> shard hashing (normGloss/fnv1a,
+// components/_duckdb.qmd); any drift throws here, surfacing as a visible
+// cell error rather than silently querying the wrong shard.
+bg_hash_check = FileAttachment("slices/bigrams/hash_check.json").json()
+
+bg_hash_ok = {
+  for (const v of bg_hash_check.vectors) {
+    const lower = normGloss(v.gloss);
+    const shard = fnv1a(lower) % bg_hash_check.n_shards;
+    if (lower !== v.gloss_lower || shard !== v.shard) {
+      throw new Error(
+        `gloss hash mismatch for "${v.gloss}": JS says (${lower}, shard ${shard}), ` +
+        `build says (${v.gloss_lower}, shard ${v.shard}) — ` +
+        `etl/write_bigram_shards.py and bigrams.qmd have drifted`);
+    }
+  }
+  return true;
+}
+```
+
+:::: {.viz-layout}
+
+::: {.viz-sidebar}
+
+```{ojs inputs-bg-word}
+viewof bg_word_raw = Inputs.text({
+  label: "Word",
+  value: "dog",
+  submit: true
+})
+viewof bg_collection = Inputs.select(collection_names, {
+  label: "Collection",
+  value: "Eng-NA"
+})
+```
+
+```{ojs bg-corpus-options}
+//| output: false
+bg_corpus_options = [...new Set(
+  corpora_all
+    .filter((d) => d.collection_name === bg_collection)
+    .map((d) => d.name)
+)].sort()
+```
+
+```{ojs inputs-bg-corpora}
+viewof bg_corpora = Inputs.select(bg_corpus_options, {
+  label: "Corpora",
+  multiple: 6,
+  value: bg_corpus_options
+})
+```
+
+```{ojs bg-role-options}
+//| output: false
+// roles that actually occur with this word/collection, biggest first
+bg_role_options = d3.groupSort(bg_counts,
+  (v) => -d3.sum(v, (d) => d.n), (d) => d.speaker_role)
+```
+
+```{ojs inputs-bg-rest}
+viewof bg_roles = Inputs.select(bg_role_options, {
+  label: "Speaker roles",
+  multiple: 5,
+  value: bg_role_options.includes("Target_Child")
+    ? ["Target_Child"] : bg_role_options.slice(0, 1)
+})
+viewof bg_topn = Inputs.range([10, 50], {
+  label: "Top N words", step: 5, value: 20
+})
+viewof bg_min = Inputs.range([2, 50], {
+  label: "Minimum count", step: 1, value: 2
+})
+```
+
+:::
+
+::: {.viz-main}
+
+{{< include components/_spinner.qmd >}}
+
+::: {.panel-tabset}
+
+## Plot
+
+```{ojs bg-counts}
+//| output: false
+bg_word = normGloss(bg_word_raw.trim())
+
+// lazy shard load + one DuckDB query per (word, collection); corpus / role /
+// top-N / min-count filters below run reactively in JS on this result
+bg_counts = {
+  if (!bg_hash_ok || !bg_word) return [];
+  const file = await bg_register_shard(fnv1a(bg_word) % bg_hash_check.n_shards);
+  const rows = await sql(`
+    SELECT pos, word, corpus_name, speaker_role, SUM(n)::INT AS n
+    FROM read_parquet('${file}')
+    WHERE anchor = '${bg_word.replace(/'/g, "''")}'
+      AND collection_name = '${bg_collection.replace(/'/g, "''")}'
+    GROUP BY 1, 2, 3, 4`);
+  return rows.map((d) => ({ ...d, n: Number(d.n) }));
+}
+```
+
+```{ojs bg-agg}
+//| output: false
+BG_SEP = "\u0001"
+
+// sum over the selected corpora and roles, then apply the min-count filter
+bg_filtered = {
+  const corpus_set = new Set(bg_corpora);
+  const role_set = new Set(bg_roles);
+  const agg = new Map();
+  for (const d of bg_counts) {
+    if (!corpus_set.has(d.corpus_name) || !role_set.has(d.speaker_role)) continue;
+    const k = d.pos + BG_SEP + d.word;
+    agg.set(k, (agg.get(k) ?? 0) + d.n);
+  }
+  const out = [];
+  for (const [k, n] of agg) {
+    if (n < bg_min) continue;
+    const [pos, word] = k.split(BG_SEP);
+    out.push({ word: bg_word, pos, neighbor: word, n });
+  }
+  return out.sort((a, b) =>
+    d3.ascending(a.pos, b.pos) || d3.descending(a.n, b.n) ||
+    d3.ascending(a.neighbor, b.neighbor));
+}
+
+bg_before = bg_filtered.filter((d) => d.pos === "before").slice(0, bg_topn)
+bg_after = bg_filtered.filter((d) => d.pos === "after").slice(0, bg_topn)
+```
+
+```{ojs bg-plot}
+{
+  clear_loading();
+  if (!bg_word) {
+    return html`<em>Type a word and press Enter.</em>`;
+  }
+  if (!bg_counts.length) {
+    return html`<div style="color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;
+        border-radius:4px;padding:0.6rem 0.9rem">
+        No occurrences of “${bg_word}” in the ${bg_collection} collection
+        (words are matched on the lowercased gloss, and pairs occurring only
+        once are not included). Try another word or collection.</div>`;
+  }
+  if (!bg_before.length && !bg_after.length) {
+    return html`<em>No neighboring words pass the current corpus, speaker-role,
+      and minimum-count filters — try selecting more corpora or roles, or
+      lowering the minimum count.</em>`;
+  }
+
+  const panel = (rows, title) => {
+    if (!rows.length) {
+      return html`<div style="width:400px;font-size:13px"><strong>${title}</strong>
+        <br><em>no pairs pass the current filters</em></div>`;
+    }
+    return Plot.plot({
+      title,
+      style: { fontFamily: "var(--sans-serif)", fontSize: "13px" },
+      width: 410,
+      height: 70 + rows.length * 19,
+      marginLeft: 110,
+      marginRight: 40,
+      x: { label: "count", grid: true },
+      y: { label: null },
+      marks: [
+        Plot.barX(rows, {
+          x: "n", y: "neighbor", fill: "#3399f3",
+          sort: { y: "-x" }, tip: true
+        }),
+        Plot.textX(rows, {
+          x: "n", y: "neighbor", text: (d) => d.n.toLocaleString(),
+          dx: 4, textAnchor: "start", fill: "#555"
+        }),
+        Plot.ruleX([0])
+      ]
+    });
+  };
+
+  return html`<div style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-start">
+    ${panel(bg_before, `words before “${bg_word}”`)}
+    ${panel(bg_after, `words after “${bg_word}”`)}
+  </div>`;
+}
+```
+
+Bars show, for the selected corpora and speaker roles, the words most often
+adjacent to the queried word within an utterance, in descending order of
+total count.
+
+## Table
+
+```{ojs bg-table}
+Inputs.table(bg_filtered, { maxWidth: 900 })
+```
+
+```{ojs bg-download}
+download_csv(bg_filtered,
+  `childes_bigrams_${collection_slug(bg_collection)}_${bg_word}.csv`)
+```
+
+:::
+
+::: {.callout-note collapse="true"}
+## About these counts
+
+Pairs are adjacent words within a single utterance in the childes-db 2021.1
+token table, matched on the NFC-normalized, lowercased gloss; pairs touching
+an unintelligible or untranscribed gloss (`xxx`, `yyy`, `www`) are excluded.
+Counts are precomputed at the corpus level, so there is no per-child
+filtering here — use [childesr](https://langcog.github.io/childesr/) for
+child-level analyses of utterance context. Word pairs occurring only once in
+a (collection, corpus, speaker role) cell are pruned from the precomputed
+tables, so the minimum observable count is 2. The first query initializes an
+in-browser database (~10 s); later queries fetch only the ~1 MB shard
+containing the queried word.
+:::
+
+:::
+
+::::
