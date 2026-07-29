@@ -32,13 +32,13 @@ Visualizations on this site use the most recent release.
   <tr><td>2021.1</td><td>v1.3</td><td>2021</td>
     <td>Re-parsed to reflect 2021 changes in CHILDES and PhonBank, using a new
     version of the corpus processing code and a better set of tests.</td></tr>
-  <tr><td>2026.1</td><td>v1.4</td><td><em>coming soon</em></td>
-    <td>Release candidate. New chatter-based pipeline with additional
-    annotation tiers (UD morphology and the <code>token_morpheme</code> table,
-    dependency parses, romanization, speech acts, phonology, media
-    timestamps), ~73 new corpora, and Redivis hosting. See the
-    <a href="docs.html">documentation</a> for details, including a
-    comparability break in morpheme-based measures.</td></tr>
+  <tr><td>2026.1</td><td>v1.4</td><td>2026-07-25</td>
+    <td>New chatter-based pipeline with additional annotation tiers (UD
+    morphology and the <code>token_morpheme</code> table, dependency parses,
+    romanization, speech acts, phonology, media timestamps), ~73 new corpora,
+    and Redivis hosting. See the <a href="docs.html">documentation</a> for
+    details, including a comparability break in morpheme-based
+    measures.</td></tr>
 </table>
 ```
 

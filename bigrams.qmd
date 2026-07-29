@@ -226,7 +226,7 @@ download_csv(bg_filtered,
 ::: {.callout-note collapse="true"}
 ## About these counts
 
-Pairs are adjacent words within a single utterance in the childes-db 2021.1
+Pairs are adjacent words within a single utterance in the childes-db 2026.1
 token table, matched on the NFC-normalized, lowercased gloss; pairs touching
 an unintelligible or untranscribed gloss (`xxx`, `yyy`, `www`) are excluded.
 Counts are precomputed at the corpus level, so there is no per-child

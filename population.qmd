@@ -161,7 +161,7 @@ download_csv(pop_rows,
 :::
 
 ::: {.callout-note}
-Counts come from the `transcript_by_speaker` table of childes-db 2021.1.
+Counts come from the `transcript_by_speaker` table of childes-db 2026.1.
 Transcripts without a recorded target-child age are not shown. Ages are
 converted from days to months as in `childesr`.
 :::

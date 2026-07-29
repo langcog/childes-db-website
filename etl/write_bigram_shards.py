@@ -36,7 +36,7 @@ from write_freq_shards import (  # noqa: E402
 STAGING = Path(
     sys.argv[1]
     if len(sys.argv) > 1
-    else "/Users/mcfrank/Projects/childes-db/redivis/staging/2021.1"
+    else "/Users/mcfrank/Projects/childes-db/pipeline/parquet_compact"
 )
 SITE = Path(__file__).resolve().parent.parent
 OUT = SITE / "slices" / "bigrams"

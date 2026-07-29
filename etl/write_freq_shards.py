@@ -41,7 +41,7 @@ import pyarrow.parquet as pq
 STAGING = Path(
     sys.argv[1]
     if len(sys.argv) > 1
-    else "/Users/mcfrank/Projects/childes-db/redivis/staging/2021.1"
+    else "/Users/mcfrank/Projects/childes-db/pipeline/parquet_compact"
 )
 SITE = Path(__file__).resolve().parent.parent
 OUT = SITE / "slices" / "freq"
@@ -72,7 +72,7 @@ def shard_of(gloss):
 
 
 def main():
-    corpus = pq.read_table(STAGING / "corpus" / "part-00000.parquet")
+    corpus = pq.read_table(STAGING / "corpus")
     corpus_name = dict(zip(corpus.column("id").to_pylist(),
                            corpus.column("name").to_pylist()))
 

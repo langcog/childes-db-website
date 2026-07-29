@@ -31,6 +31,11 @@
  },
  {
   "collection_name": "Biling",
+  "name": "CSLAD",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Biling",
   "name": "CUHK",
   "data_source": "CHILDES"
  },
@@ -51,6 +56,11 @@
  },
  {
   "collection_name": "Biling",
+  "name": "EACMC",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Biling",
   "name": "FallsChurch",
   "data_source": "PhonBank"
  },
@@ -58,6 +68,21 @@
   "collection_name": "Biling",
   "name": "FerFuLice",
   "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Biling",
+  "name": "French-EP",
+  "data_source": "PhonBank"
+ },
+ {
+  "collection_name": "Biling",
+  "name": "French-Greek",
+  "data_source": "PhonBank"
+ },
+ {
+  "collection_name": "Biling",
+  "name": "FrenchL2",
+  "data_source": "PhonBank"
  },
  {
   "collection_name": "Biling",
@@ -76,12 +101,17 @@
  },
  {
   "collection_name": "Biling",
+  "name": "HKMECC",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Biling",
   "name": "Hacohen",
   "data_source": "CHILDES"
  },
  {
   "collection_name": "Biling",
-  "name": "Hayashi",
+  "name": "Hoff",
   "data_source": "CHILDES"
  },
  {
@@ -96,28 +126,33 @@
  },
  {
   "collection_name": "Biling",
-  "name": "Koroschetz",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Biling",
   "name": "Krupa",
   "data_source": "CHILDES"
  },
  {
   "collection_name": "Biling",
-  "name": "Leo",
+  "name": "LOBILL",
   "data_source": "CHILDES"
  },
  {
   "collection_name": "Biling",
-  "name": "MCF",
+  "name": "Lim",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Biling",
+  "name": "MPI-EVA-Leipzig",
   "data_source": "CHILDES"
  },
  {
   "collection_name": "Biling",
   "name": "Navracsics",
   "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Biling",
+  "name": "Nulahan",
+  "data_source": "PhonBank"
  },
  {
   "collection_name": "Biling",
@@ -131,22 +166,17 @@
  },
  {
   "collection_name": "Biling",
+  "name": "PhonBLA",
+  "data_source": "PhonBank"
+ },
+ {
+  "collection_name": "Biling",
   "name": "PraisleyRose",
   "data_source": "PhonBank"
  },
  {
   "collection_name": "Biling",
   "name": "ProjectS",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Biling",
-  "name": "Reyes",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Biling",
-  "name": "Roggero",
   "data_source": "CHILDES"
  },
  {
@@ -158,6 +188,11 @@
   "collection_name": "Biling",
   "name": "Seba",
   "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Biling",
+  "name": "Seine-Marne",
+  "data_source": "PhonBank"
  },
  {
   "collection_name": "Biling",
@@ -216,11 +251,6 @@
  },
  {
   "collection_name": "Celtic",
-  "name": "CIG2",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Celtic",
   "name": "Gaeltacht",
   "data_source": "CHILDES"
  },
@@ -232,6 +262,11 @@
  {
   "collection_name": "Chinese",
   "name": "AcadLang",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Chinese",
+  "name": "BJCMC",
   "data_source": "CHILDES"
  },
  {
@@ -282,6 +317,16 @@
  {
   "collection_name": "Chinese",
   "name": "LiZhou",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Chinese",
+  "name": "MOST",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Chinese",
+  "name": "NSCtoys",
   "data_source": "CHILDES"
  },
  {
@@ -351,16 +396,6 @@
  },
  {
   "collection_name": "Clinical",
-  "name": "BolPool",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
-  "name": "CORDIS",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
   "name": "Cattini",
   "data_source": "PhonBank"
  },
@@ -376,33 +411,13 @@
  },
  {
   "collection_name": "Clinical",
-  "name": "DS",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
   "name": "Granada",
   "data_source": "PhonBank"
  },
  {
   "collection_name": "Clinical",
-  "name": "HL",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
   "name": "LeNormand",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
-  "name": "Levy",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
-  "name": "MOC",
-  "data_source": "CHILDES"
+  "data_source": "PhonBank"
  },
  {
   "collection_name": "Clinical",
@@ -416,18 +431,13 @@
  },
  {
   "collection_name": "Clinical",
-  "name": "Oviedo",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
   "name": "PCSC",
   "data_source": "PhonBank"
  },
  {
   "collection_name": "Clinical",
-  "name": "PERLA",
-  "data_source": "CHILDES"
+  "name": "PERCEPT-GFTA",
+  "data_source": "PhonBank"
  },
  {
   "collection_name": "Clinical",
@@ -441,152 +451,212 @@
  },
  {
   "collection_name": "Clinical",
-  "name": "SLI",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
-  "name": "TD",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
-  "name": "Thessaloniki",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Clinical",
   "name": "TorringtonEaton",
   "data_source": "PhonBank"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical",
+  "name": "Warnier",
+  "data_source": "PhonBank"
+ },
+ {
+  "collection_name": "Clinical-Eng",
   "name": "Bliss",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Chiat-Ruth",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Conti1",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Conti2",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Conti3",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Conti4",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "DS",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "ENNI",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "EisenbergGuo",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "EllisWeismer",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Flusberg",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Gillam",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "HL",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "HL",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Hargrove",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Hooshyar",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Malakoff",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Narrative",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "POLER",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "ParentChild",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Rescorla",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "TD",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "TD",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "TD",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "Twins",
   "data_source": "CHILDES"
  },
  {
-  "collection_name": "Clinical-MOR",
+  "collection_name": "Clinical-Eng",
   "name": "UCSD",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "BolPool",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "CORDIS",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "ChromoLang",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "DS",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "HL",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "HongKong-SLI",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "Levy",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "MOC",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "Oviedo",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "PERLA",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "SLI",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "TD",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "Thessaloniki",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Clinical-Other",
+  "name": "Zwitserlood",
   "data_source": "CHILDES"
  },
  {
@@ -612,6 +682,11 @@
  {
   "collection_name": "DutchAfrikaans",
   "name": "DeHouwer",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "DutchAfrikaans",
+  "name": "DeHouwerBornstein",
   "data_source": "CHILDES"
  },
  {
@@ -680,6 +755,31 @@
   "data_source": "CHILDES"
  },
  {
+  "collection_name": "EastAsian",
+  "name": "Zlatev",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-AAE",
+  "name": "Barriere",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-AAE",
+  "name": "Cameron",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-AAE",
+  "name": "DELV",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-AAE",
+  "name": "DSLT",
+  "data_source": "CHILDES"
+ },
+ {
   "collection_name": "Eng-NA",
   "name": "Bates",
   "data_source": "CHILDES"
@@ -721,13 +821,13 @@
  },
  {
   "collection_name": "Eng-NA",
-  "name": "Clark",
+  "name": "Champaign",
   "data_source": "CHILDES"
  },
  {
   "collection_name": "Eng-NA",
-  "name": "ComptonPater",
-  "data_source": "PhonBank"
+  "name": "Clark",
+  "data_source": "CHILDES"
  },
  {
   "collection_name": "Eng-NA",
@@ -751,7 +851,22 @@
  },
  {
   "collection_name": "Eng-NA",
+  "name": "EHS",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-NA",
   "name": "Evans",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-NA",
+  "name": "FMB_book",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-NA",
+  "name": "FMB_home",
   "data_source": "CHILDES"
  },
  {
@@ -826,6 +941,11 @@
  },
  {
   "collection_name": "Eng-NA",
+  "name": "Lego",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-NA",
   "name": "MacWhinney",
   "data_source": "CHILDES"
  },
@@ -866,6 +986,21 @@
  },
  {
   "collection_name": "Eng-NA",
+  "name": "Nicolopoulou",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-NA",
+  "name": "Nippold",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-NA",
+  "name": "OCSC",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-NA",
   "name": "PaidoEnglish",
   "data_source": "PhonBank"
  },
@@ -901,6 +1036,11 @@
  },
  {
   "collection_name": "Eng-NA",
+  "name": "Rowe",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Eng-NA",
   "name": "Sachs",
   "data_source": "CHILDES"
  },
@@ -928,6 +1068,11 @@
   "collection_name": "Eng-NA",
   "name": "StanfordEnglish",
   "data_source": "PhonBank"
+ },
+ {
+  "collection_name": "Eng-NA",
+  "name": "StoopsMontag",
+  "data_source": "CHILDES"
  },
  {
   "collection_name": "Eng-NA",
@@ -1006,11 +1151,6 @@
  },
  {
   "collection_name": "Eng-UK",
-  "name": "Korman",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Eng-UK",
   "name": "Lara",
   "data_source": "CHILDES"
  },
@@ -1052,6 +1192,66 @@
  {
   "collection_name": "Eng-UK",
   "name": "Wells",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Argus",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Beek",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Bodor",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Kapanen",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Kirjavainen-MPI",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Kohler",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Korgesaar",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Kuett",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "MacWhinney",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Reger",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Vija",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Finno-Ugric",
+  "name": "Zupping",
   "data_source": "CHILDES"
  },
  {
@@ -1201,6 +1401,11 @@
  },
  {
   "collection_name": "Frogs",
+  "name": "English-Lambelet",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Frogs",
   "name": "English-MiamiBiling",
   "data_source": "CHILDES"
  },
@@ -1237,6 +1442,11 @@
  {
   "collection_name": "Frogs",
   "name": "German-Bamberg",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Frogs",
+  "name": "German-Neitzel",
   "data_source": "CHILDES"
  },
  {
@@ -1321,6 +1531,11 @@
  },
  {
   "collection_name": "German",
+  "name": "Koch",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "German",
   "name": "Leo",
   "data_source": "CHILDES"
  },
@@ -1336,8 +1551,8 @@
  },
  {
   "collection_name": "German",
-  "name": "Nikolas",
-  "data_source": "CHILDES"
+  "name": "PAIDUS-German",
+  "data_source": "PhonBank"
  },
  {
   "collection_name": "German",
@@ -1430,6 +1645,46 @@
   "data_source": "CHILDES"
  },
  {
+  "collection_name": "MAIN",
+  "name": "Cantonese-Wong",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "MAIN",
+  "name": "Cantonese-Zhang",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "MAIN",
+  "name": "Croatian",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "MAIN",
+  "name": "Estonian",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "MAIN",
+  "name": "Indonesian",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "MAIN",
+  "name": "Mizo-English",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "MAIN",
+  "name": "Odia-English",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "MAIN",
+  "name": "Russian-German",
+  "data_source": "CHILDES"
+ },
+ {
   "collection_name": "Other",
   "name": "Aksu",
   "data_source": "CHILDES"
@@ -1441,12 +1696,12 @@
  },
  {
   "collection_name": "Other",
-  "name": "Argus",
+  "name": "BSF",
   "data_source": "CHILDES"
  },
  {
   "collection_name": "Other",
-  "name": "BSF",
+  "name": "Balausa1",
   "data_source": "CHILDES"
  },
  {
@@ -1456,17 +1711,12 @@
  },
  {
   "collection_name": "Other",
-  "name": "Beek",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Other",
   "name": "BermanLong",
   "data_source": "CHILDES"
  },
  {
   "collection_name": "Other",
-  "name": "Bodor",
+  "name": "Bou-Saboun",
   "data_source": "CHILDES"
  },
  {
@@ -1486,12 +1736,12 @@
  },
  {
   "collection_name": "Other",
-  "name": "Doukas",
+  "name": "Family",
   "data_source": "CHILDES"
  },
  {
   "collection_name": "Other",
-  "name": "Family",
+  "name": "GarciaKidd",
   "data_source": "CHILDES"
  },
  {
@@ -1506,33 +1756,18 @@
  },
  {
   "collection_name": "Other",
+  "name": "ISU",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Other",
   "name": "Istanbul",
   "data_source": "PhonBank"
  },
  {
   "collection_name": "Other",
-  "name": "Kapanen",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Other",
   "name": "KernArabic",
   "data_source": "PhonBank"
- },
- {
-  "collection_name": "Other",
-  "name": "Kohler",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Other",
-  "name": "Korgesaar",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Other",
-  "name": "Kuett",
-  "data_source": "CHILDES"
  },
  {
   "collection_name": "Other",
@@ -1556,13 +1791,8 @@
  },
  {
   "collection_name": "Other",
-  "name": "MAIN",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Other",
-  "name": "MacWhinney",
-  "data_source": "CHILDES"
+  "name": "Matlhaku",
+  "data_source": "PhonBank"
  },
  {
   "collection_name": "Other",
@@ -1591,11 +1821,6 @@
  },
  {
   "collection_name": "Other",
-  "name": "Reger",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Other",
   "name": "Salama",
   "data_source": "CHILDES"
  },
@@ -1606,28 +1831,18 @@
  },
  {
   "collection_name": "Other",
-  "name": "Sarvasy",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Other",
   "name": "Soto",
   "data_source": "CHILDES"
  },
  {
   "collection_name": "Other",
-  "name": "Stephany",
-  "data_source": "CHILDES"
+  "name": "Tarahomi",
+  "data_source": "PhonBank"
  },
  {
   "collection_name": "Other",
-  "name": "Vija",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Other",
-  "name": "Zupping",
-  "data_source": "CHILDES"
+  "name": "Vu",
+  "data_source": "PhonBank"
  },
  {
   "collection_name": "Romance",
@@ -1656,7 +1871,7 @@
  },
  {
   "collection_name": "Romance",
-  "name": "Batoreo",
+  "name": "Burgato",
   "data_source": "CHILDES"
  },
  {
@@ -1708,11 +1923,6 @@
   "collection_name": "Romance",
   "name": "KernRomanian",
   "data_source": "PhonBank"
- },
- {
-  "collection_name": "Romance",
-  "name": "Klammler",
-  "data_source": "CHILDES"
  },
  {
   "collection_name": "Romance",
@@ -1786,11 +1996,6 @@
  },
  {
   "collection_name": "Scandinavian",
-  "name": "Masdottir",
-  "data_source": "PhonBank"
- },
- {
-  "collection_name": "Scandinavian",
   "name": "Plunkett",
   "data_source": "CHILDES"
  },
@@ -1811,6 +2016,11 @@
  },
  {
   "collection_name": "Slavic",
+  "name": "CCPCL",
+  "data_source": "CHILDES"
+ },
+ {
+  "collection_name": "Slavic",
   "name": "Chroma",
   "data_source": "CHILDES"
  },
@@ -1826,17 +2036,7 @@
  },
  {
   "collection_name": "Slavic",
-  "name": "MAIN",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Slavic",
-  "name": "Polish-CDS",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Slavic",
-  "name": "Protassova",
+  "name": "RusLan",
   "data_source": "CHILDES"
  },
  {
@@ -1901,11 +2101,6 @@
  },
  {
   "collection_name": "Spanish",
-  "name": "JacksonThal",
-  "data_source": "CHILDES"
- },
- {
-  "collection_name": "Spanish",
   "name": "Koine",
   "data_source": "PhonBank"
  },
@@ -1946,6 +2141,11 @@
  },
  {
   "collection_name": "Spanish",
+  "name": "PAIDUS-Spanish",
+  "data_source": "PhonBank"
+ },
+ {
+  "collection_name": "Spanish",
   "name": "Remedi",
   "data_source": "CHILDES"
  },
@@ -1973,11 +2173,6 @@
   "collection_name": "Spanish",
   "name": "Vivar",
   "data_source": "PhonBank"
- },
- {
-  "collection_name": "XLing",
-  "name": "MDT",
-  "data_source": "CHILDES"
  },
  {
   "collection_name": "XLing",

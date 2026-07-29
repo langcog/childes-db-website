@@ -66,8 +66,7 @@ For a complete overview along with examples, refer to
 
 ```{=html}
 <div class="cdb-release-bar">
-  <h3>New in 2026.1
-    <span class="cdb-release-badge">release candidate — coming soon</span></h3>
+  <h3>New in 2026.1</h3>
   <ul>
     <li><strong>More data:</strong> 24.2 million utterances (+24%) and 89
       million tokens, including ~73 corpora new to childes-db.</li>

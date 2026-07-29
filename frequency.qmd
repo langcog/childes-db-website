@@ -306,7 +306,7 @@ download_csv(fq_binned,
 :::
 
 ::: {.callout-note}
-Counts come from the childes-db 2021.1 type-frequency table (one row per
+Counts come from the childes-db 2026.1 type-frequency table (one row per
 word type per speaker per transcript); denominators are total tokens per
 speaker per transcript from `get_speaker_statistics`, aggregated over the
 same selection. Words are matched on the NFC-normalized, lowercased gloss.

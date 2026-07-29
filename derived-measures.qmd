@@ -180,7 +180,7 @@ download_csv(dm_binned,
 :::
 
 ::: {.callout-note}
-Measures are computed per speaker per transcript in childes-db 2021.1:
+Measures are computed per speaker per transcript in childes-db 2026.1:
 MLU in words and morphemes, type-token ratio (types / tokens), and the
 lexical-diversity measures MTLD and HD-D (only defined for speakers who
 produced at least 50 tokens in a transcript). Ages are converted from days to

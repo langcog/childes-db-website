@@ -27,9 +27,13 @@ import pyarrow.parquet as pq
 STAGING = Path(
     sys.argv[1]
     if len(sys.argv) > 1
-    else "/Users/mcfrank/Projects/childes-db/redivis/staging/2021.1"
+    else "/Users/mcfrank/Projects/childes-db/pipeline/parquet_compact"
 )
 SITE = Path(__file__).resolve().parent.parent
+
+# release version shipped in data/stats.json (the staging dir is no longer
+# named after the release, so it is recorded here)
+VERSION = "2026.1"
 
 DAYS_PER_MONTH = 365.2425 / 12
 
@@ -50,9 +54,10 @@ def rnd(x, digits):
 
 
 def main():
-    tbs = pq.read_table(STAGING / "transcript_by_speaker" / "part-00000.parquet")
-    corpus = pq.read_table(STAGING / "corpus" / "part-00000.parquet")
-    transcript = pq.read_table(STAGING / "transcript" / "part-00000.parquet")
+    # each table is a directory of parquet part files
+    tbs = pq.read_table(STAGING / "transcript_by_speaker")
+    corpus = pq.read_table(STAGING / "corpus")
+    transcript = pq.read_table(STAGING / "transcript")
 
     corpus_name = dict(zip(corpus.column("id").to_pylist(),
                            corpus.column("name").to_pylist()))
@@ -123,7 +128,7 @@ def main():
     print(f"wrote data/corpora.json ({len(corpora)} corpora)")
 
     stats = {
-        "version": STAGING.name,
+        "version": VERSION,
         "n_collections": len(collections),
         "n_corpora": len(corpora),
         "n_transcripts": len({t["id"] for t in tr}),
