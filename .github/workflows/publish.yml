@@ -1,0 +1,36 @@
+# Render the Quarto site and publish it to the gh-pages branch.
+#
+# The render needs no R, no Python, and no secrets: all pages are OJS over
+# slices/ and data/ files committed to the repo (regenerate them with the
+# scripts in etl/ when a new childes-db release comes out).
+#
+# NOTE: the gh-pages branch must exist before the first run
+# (git commit-tree an empty tree, branch, push — see the repo docs).
+
+name: Publish site
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: publish
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      - uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
