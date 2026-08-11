@@ -35,13 +35,13 @@ ${site_stats.n_corpora} corpora in ${site_stats.n_collections} collections.</div
     <div class="cdb-card-title">API Tutorial</div>
     <p>Get a hands-on walk-through on accessing <code>childes-db</code>
        through R.</p>
-    <img src="img/code.png" alt="R code accessing childes-db">
+    <img src="images/code.png" alt="R code accessing childes-db">
   </a>
   <a href="frequency.html">
     <div class="cdb-card-title">Visualizations</div>
     <p>Explore the data in <code>childes-db</code> using our interactive
        applications.</p>
-    <img src="img/plot.png" alt="Interactive childes-db plot">
+    <img src="images/plot.png" alt="Interactive childes-db plot">
   </a>
 </div>
 ```
