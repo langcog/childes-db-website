@@ -1,5 +1,6 @@
 ---
 title: "About"
+aliases: [faq.html]
 ---
 
 The `childes-db` project aims to make [CHILDES](https://childes.talkbank.org)

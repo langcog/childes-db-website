@@ -1,5 +1,6 @@
 ---
 title: "Derived Measures"
+aliases: [mlu.html]
 ---
 
 Explore how measures of linguistic productivity and lexical diversity change

@@ -1,5 +1,6 @@
 ---
 title: "Frequency Counts"
+aliases: [analyses.html]
 ---
 
 How often are particular words used in speech to and from children? Type
