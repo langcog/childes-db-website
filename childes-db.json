@@ -1,0 +1,10 @@
+{
+	"host":"52.37.132.215",
+	"current":"2021.1",
+	"supported": ["2018.1","2019.1","2020.1", "childes_db_dev","2021.1","2024_hackathon"],
+	"historical":[],
+	"user": "childesdb",
+	"password": "uy5z4hf7ihBjf",
+	"redivis_current": "2026.1",
+	"redivis_versions": {"2018.1":"v1.0","2019.1":"v1.1","2020.1":"v1.2","2021.1":"v1.3","2026.1":"v1.4"}
+}

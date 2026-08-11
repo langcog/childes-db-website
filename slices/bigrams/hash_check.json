@@ -1,0 +1,40 @@
+{
+ "n_shards": 64,
+ "vectors": [
+  {
+   "gloss": "ball",
+   "gloss_lower": "ball",
+   "shard": 36
+  },
+  {
+   "gloss": "the",
+   "gloss_lower": "the",
+   "shard": 28
+  },
+  {
+   "gloss": "dog",
+   "gloss_lower": "dog",
+   "shard": 9
+  },
+  {
+   "gloss": "I've",
+   "gloss_lower": "i've",
+   "shard": 8
+  },
+  {
+   "gloss": "mamá",
+   "gloss_lower": "mamá",
+   "shard": 54
+  },
+  {
+   "gloss": "犬",
+   "gloss_lower": "犬",
+   "shard": 24
+  },
+  {
+   "gloss": "Mommy",
+   "gloss_lower": "mommy",
+   "shard": 50
+  }
+ ]
+}
