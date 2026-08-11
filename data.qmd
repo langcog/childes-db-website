@@ -1,0 +1,97 @@
+---
+title: "Data"
+aliases: [releases.html, api.html]
+---
+
+## The dataset
+
+`childes-db` releases are hosted as a versioned dataset on
+[Redivis](https://redivis.com):
+[**datapages.childes_db**](https://stanford.redivis.com/datasets/b6q6-14tmdjgw8).
+Each `childes-db` release is a Redivis dataset version, so any table from any
+release can be browsed, queried, downloaded, or accessed programmatically —
+and analyses can be pinned to an exact version for reproducibility.
+
+`childes-db` is updated periodically with a fresh parse of the CHILDES
+database, to reflect new corpora and to revise existing annotations (see the
+[documentation](docs.html) for how CHAT transcripts are treated).
+Visualizations on this site use the most recent release.
+
+## Releases
+
+```{=html}
+<table class="releases-table">
+  <tr><th>childes-db version</th><th>Redivis tag</th><th>Released</th><th>Notes</th></tr>
+  <tr><td>2018.1</td><td>v1.0</td><td>2018</td>
+    <td>Initial release.</td></tr>
+  <tr><td>2019.1</td><td>v1.1</td><td>2019</td>
+    <td>Re-parsed to reflect 2019 changes in CHILDES. Note that this excludes
+    key datasets like Providence which were moved to PhonBank.</td></tr>
+  <tr><td>2020.1</td><td>v1.2</td><td>2020</td>
+    <td>Re-parsed to reflect 2020 changes in CHILDES, as well as the 2020
+    version of PhonBank.</td></tr>
+  <tr><td>2021.1</td><td>v1.3</td><td>2021</td>
+    <td>Re-parsed to reflect 2021 changes in CHILDES and PhonBank, using a new
+    version of the corpus processing code and a better set of tests.</td></tr>
+  <tr><td>2026.1</td><td>v1.4</td><td>2026-07-25</td>
+    <td>New chatter-based pipeline with additional annotation tiers (UD
+    morphology and the <code>token_morpheme</code> table, dependency parses,
+    romanization, speech acts, phonology, media timestamps), ~73 new corpora,
+    and Redivis hosting. See the <a href="docs.html">documentation</a> for
+    details, including a comparability break in morpheme-based
+    measures.</td></tr>
+</table>
+```
+
+## Accessing the data
+
+- **R (childesr).** The [childesr](https://langcog.github.io/childesr/)
+  package provides tidy accessors for collections, corpora, participants,
+  transcripts, utterances, and tokens, with a `db_version` argument to select
+  a release. The Redivis-backed version currently lives on a branch; install
+  it with:
+
+  ```r
+  # install.packages("remotes")
+  remotes::install_github("langcog/childesr", ref = "redivis")
+  ```
+
+- **Redivis web interface.** Browse the
+  [dataset](https://stanford.redivis.com/datasets/b6q6-14tmdjgw8) directly:
+  inspect any table's schema, run SQL queries in the browser, and download
+  full tables or query results (CSV, parquet, and other formats), all without
+  writing code.
+
+- **Redivis clients (R / Python).** For programmatic access beyond childesr,
+  the [redivis-r](https://apidocs.redivis.com/client-libraries/redivis-r) and
+  [redivis-python](https://apidocs.redivis.com/client-libraries/redivis-python)
+  client libraries can query and fetch any table in the dataset, at any
+  version.
+
+- **Direct exports.** Full-table exports for local analysis (e.g., parquet
+  for DuckDB or arrow) are available from each table's page on Redivis — no
+  database server required.
+
+## Identifiers
+
+Numeric ids (`transcript_id`, `utterance_id`, `token_id`, …) are
+**release-internal**: they are stable within a release and consistent across
+tables of that release, but they are not guaranteed to match across releases.
+To link transcripts across releases, use the **TalkBank PID** carried on each
+transcript, which is TalkBank's persistent identifier.
+
+## Reproducibility
+
+Pin your analysis to a version: record the `childes-db` version (e.g.,
+`2021.1`) and, if you access Redivis directly, reference the dataset version
+tag (e.g., `v1.3`) in your code. Every release remains available on Redivis,
+so a pinned analysis can be re-run as-is even after new releases appear.
+
+## Citation
+
+If you use `childes-db`, please note the database version you used (e.g.,
+`2021.1`) and cite both [our paper](https://link.springer.com/article/10.3758/s13428-018-1176-7)
+in *Behavior Research Methods* and CHILDES itself — both the database and the
+corpora you use — following the
+[TalkBank policy](https://talkbank.org/share/citation.html). See
+[About](about.html) for the full citation policy.

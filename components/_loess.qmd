@@ -1,0 +1,48 @@
+```{ojs loess-helper}
+//| output: false
+// weighted LOESS (tricube kernel, local linear fit), matching the smoothers
+// the shiny apps drew with geom_smooth(method = "loess", weight = n)
+loess_points = (data, { x = "age", y = "value", w = null, span = 0.75, grid = 60 } = {}) => {
+  const pts = data
+    .map((d) => ({ x: +d[x], y: +d[y], w: w ? +d[w] : 1 }))
+    .filter((d) => Number.isFinite(d.x) && Number.isFinite(d.y))
+    .sort((a, b) => a.x - b.x);
+  if (pts.length < 3) return pts.map((d) => ({ [x]: d.x, [y]: d.y }));
+
+  const k = Math.max(2, Math.ceil(span * pts.length));
+  const x0 = pts[0].x, x1 = pts[pts.length - 1].x;
+  const out = [];
+  for (let i = 0; i <= grid; i++) {
+    const xt = x0 + (x1 - x0) * (i / grid);
+    const dists = pts.map((p) => Math.abs(p.x - xt)).sort((a, b) => a - b);
+    const dmax = dists[Math.min(k, dists.length) - 1] || 1e-9;
+    let sw = 0, swx = 0, swy = 0, swxx = 0, swxy = 0;
+    for (const p of pts) {
+      const t = Math.abs(p.x - xt) / dmax;
+      if (t >= 1) continue;
+      const wt = Math.pow(1 - t * t * t, 3) * p.w;
+      sw += wt; swx += wt * p.x; swy += wt * p.y;
+      swxx += wt * p.x * p.x; swxy += wt * p.x * p.y;
+    }
+    if (sw <= 0) continue;
+    const denom = sw * swxx - swx * swx;
+    const yt = Math.abs(denom) < 1e-12
+      ? swy / sw
+      : (swy * swxx - swx * swxy) / denom + ((sw * swxy - swx * swy) / denom) * xt;
+    out.push({ [x]: xt, [y]: yt });
+  }
+  return out;
+}
+
+// smooth each series (grouped by `series`) and tag points with the group
+loess_series = (data, series, opts = {}) => {
+  const groups = new Map();
+  for (const d of data) {
+    const key = d[series];
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(d);
+  }
+  return [...groups.entries()].flatMap(([key, rows]) =>
+    loess_points(rows, opts).map((p) => ({ ...p, [series]: key })));
+}
+```

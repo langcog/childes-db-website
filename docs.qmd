@@ -1,0 +1,90 @@
+---
+title: "Documentation"
+---
+
+## Codebase and issue tracking
+
+`childes-db` is all open source and under active development. If you run into
+an issue, please file it on the GitHub issue tracker of the appropriate
+repository:
+
+- Database and extraction method:
+  [github.com/langcog/childes-db](https://github.com/langcog/childes-db)
+- R package: [github.com/langcog/childesr](https://github.com/langcog/childesr)
+- Python package: [github.com/langcog/childespy](https://github.com/langcog/childespy)
+- Website frontend:
+  [github.com/langcog/childes-db-website](https://github.com/langcog/childes-db-website)
+
+If you have questions about `childes-db` or want to stay updated on changes to
+the database, visualizations, or API, join our announcement
+[mailing list](https://mailman.stanford.edu/mailman/listinfo/childes-db), or
+email us at childes-db-contact (at) stanford (dot) edu.
+
+## Treatment of CHAT format
+
+Starting with the 2026.1 release, `childes-db` parses CHAT transcripts with
+[chatter](https://talkbank.org/software/chatter.html), TalkBank's own
+cross-platform parser: each `.cha` file is converted to schema-validated JSON,
+which the `childes-db` pipeline then flattens into the tabular collection /
+corpus / participant / transcript / utterance / token tables (files that fail
+chatter's validation — 225 of 56,804 in 2026.1, 0.4% — are excluded and
+logged).
+
+### Annotation tiers captured in 2026.1
+
+- **`%mor` morphology, in Universal Dependencies style.** Each token carries a
+  UD part of speech (`part_of_speech`), lemma (`stem`), feature chain
+  (`suffix`), and post-clitics (`clitic`). A new **`token_morpheme` table**
+  additionally stores one row per morpheme (stems and clitics with their own
+  lemma, POS, and UD features), for morpheme-level analyses.
+- **`%gra` grammatical dependencies.** Each token carries its dependency
+  triple (`gra_index`, `gra_head`, `gra_relation`), so full dependency parses
+  can be reconstructed per utterance.
+- **`%ort` romanization.** Utterance-level romanized transcriptions (e.g., for
+  Japanese corpora) are stored on the utterance as `ort`.
+- **`%spa` speech acts.** Speech-act codes are stored on the utterance where
+  the tier exists.
+- **`%pho`/`%mod` phonology (PhonBank).** Actual and model phonology are
+  stored at both the utterance and token level for PhonBank corpora.
+- **Media timestamps.** Utterances in media-linked transcripts carry
+  `media_start`/`media_end` (in seconds) from CHAT bullets.
+
+As in earlier releases, some CHAT material is deliberately **excluded from the
+token table**: fillers (`&-um`), phonological fragments (`&+`), nonwords
+(`&~`), and omitted words (`0det`) are not tokens, while untranscribed or
+unintelligible material (`xxx`, `yyy`) is retained as tokens. Retraced words
+are tokens but carry no morphology.
+
+**Alignment guarantees.** The pipeline reconstructs chatter's morphology
+alignment (which words on the main tier correspond to which `%mor`/`%gra`
+items) and verifies it on every utterance: in the 2026.1 full run this check
+passed with **0 mismatches across 24.2 million utterances**, and all
+foreign-key relationships among tables were verified with 0 violations. Full
+details: the parser validation and full-run QA reports in the
+[childes-db repository](https://github.com/langcog/childes-db).
+
+::: {.callout-warning}
+## MLU-m and `num_morphemes` are not comparable across 2021.1 and 2026.1
+
+TalkBank re-annotated morphology with UD-style Batchalign tagging, and 2026.1
+stores it faithfully. `num_morphemes` is now 1 + number of UD features +
+number of post-clitics, which is a different quantity than the classic-MOR
+morpheme count in releases through 2021.1 — so **morpheme-based measures
+(MLU-m) must not be compared across that boundary**. Word-based measures are
+unaffected: MLU-w was validated against 2021.1 at r ≈ 0.999 on matched
+transcripts.
+:::
+
+### Legacy pipeline (releases through 2021.1)
+
+Releases up to and including 2021.1 used a different pipeline: CHAT files were
+converted to XML via chatter, parsed in Python, and imported into a MySQL
+database through Django. The table below documents which CHAT annotations and
+markers were preserved in those releases:
+
+```{=html}
+<iframe style="border:none; width:100%; height:800px"
+  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQdH8c2b-GJB_Aj2ywVVg0IqqyJIDG9ZYHxDlmVSA_CRL6rprzziT7EXzOiIH2dDo8cHCPNK4zkX9CW/pubhtml?gid=0&single=true&widget=true&headers=false"></iframe>
+```
+
+Database versioning and access are described on the [Data](data.html) page.

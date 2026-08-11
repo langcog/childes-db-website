@@ -1,0 +1,320 @@
+---
+title: "Frequency Counts"
+aliases: [analyses.html]
+---
+
+How often are particular words used in speech to and from children? Type
+comma-separated words, pick a collection, and compare usage frequency (parts
+per million tokens) across ages, speakers, corpora, and children. Counts are
+over all utterances attributed to a speaker, matched case-insensitively.
+
+{{< include components/_load.qmd >}}
+{{< include components/_loess.qmd >}}
+{{< include components/_download.qmd >}}
+{{< include components/_style.qmd >}}
+{{< include components/_interval.qmd >}}
+{{< include components/_duckdb.qmd >}}
+
+```{ojs setup-fq}
+//| output: false
+register_shard = (s) => register_parquet("slices/freq", `shard-${s}.parquet`)
+```
+
+```{ojs hash-fq}
+//| output: false
+// hash_check.json carries build-time test vectors for the gloss -> shard
+// hashing (normGloss/fnv1a, components/_duckdb.qmd); any drift throws here,
+// which surfaces as a visible cell error on the page (rather than silently
+// querying the wrong shard and returning nothing).
+hash_check = FileAttachment("slices/freq/hash_check.json").json()
+
+hash_ok = {
+  for (const v of hash_check.vectors) {
+    const lower = normGloss(v.gloss);
+    const shard = fnv1a(lower) % hash_check.n_shards;
+    if (lower !== v.gloss_lower || shard !== v.shard) {
+      throw new Error(
+        `gloss hash mismatch for "${v.gloss}": JS says (${lower}, shard ${shard}), ` +
+        `build says (${v.gloss_lower}, shard ${v.shard}) — ` +
+        `etl/write_freq_shards.py and frequency.qmd have drifted`);
+    }
+  }
+  return true;
+}
+```
+
+:::: {.viz-layout}
+
+::: {.viz-sidebar}
+
+```{ojs inputs-fq-words}
+viewof fq_words_raw = Inputs.text({
+  label: "Words (comma-separated)",
+  value: "ball,the",
+  submit: true
+})
+viewof fq_collection = Inputs.select(collection_names, {
+  label: "Collection",
+  value: "Eng-NA"
+})
+```
+
+```{ojs fq-stats}
+//| output: false
+// per (transcript, speaker) statistics for the selected collection: options
+// for the selectors below, and num_tokens for the ppm denominators
+// (childesr::get_speaker_statistics, as in the original shiny app)
+fq_stats = d3.json(`slices/speaker_stats/${collection_slug(fq_collection)}.json`)
+  .then(unpack)
+
+fq_corpus_options = [...new Set(
+  corpora_all
+    .filter((d) => d.collection_name === fq_collection)
+    .map((d) => d.name)
+)].sort()
+```
+
+```{ojs inputs-fq-corpora}
+viewof fq_corpora = Inputs.select(fq_corpus_options, {
+  label: "Corpora",
+  multiple: 6,
+  value: fq_corpus_options
+})
+```
+
+```{ojs fq-child-options}
+//| output: false
+fq_child_options = {
+  const corpus_set = new Set(fq_corpora);
+  const names = [...new Set(
+    fq_stats
+      .filter((d) => corpus_set.has(d.corpus_name) && d.target_child_name != null)
+      .map((d) => d.target_child_name)
+  )].sort();
+  return ["All children", ...names];
+}
+
+fq_role_options = d3.groupSort(fq_stats, (v) => -v.length, (d) => d.speaker_role)
+```
+
+```{ojs inputs-fq-rest}
+viewof fq_children = Inputs.select(fq_child_options, {
+  label: "Target children",
+  multiple: 5,
+  value: ["All children"]
+})
+viewof fq_roles = Inputs.select(fq_role_options, {
+  label: "Speaker roles",
+  multiple: 5,
+  value: fq_role_options.includes("Target_Child")
+    ? ["Target_Child"] : fq_role_options.slice(0, 1)
+})
+viewof fq_ages = interval([0, 18], { step: 0.5, value: [0, 18], label: "Ages (years)" })
+viewof fq_binwidth = Inputs.range([0, 24], {
+  label: "Bin size (months, 0 = none)", step: 2, value: 2
+})
+```
+
+:::
+
+::: {.viz-main}
+
+{{< include components/_spinner.qmd >}}
+
+::: {.panel-tabset}
+
+## Plot
+
+```{ojs fq-counts}
+//| output: false
+fq_words = [...new Set(
+  fq_words_raw.split(",").map((w) => normGloss(w.trim())).filter(Boolean)
+)].slice(0, 8)
+
+// lazy shard load + one DuckDB query per (words, collection); corpus /
+// child / role / age filters below run reactively in JS on this result
+fq_counts = {
+  if (!hash_ok || !fq_words.length) return [];
+  const shards = [...new Set(fq_words.map((w) => fnv1a(w) % hash_check.n_shards))];
+  const files = await Promise.all(shards.map(register_shard));
+  const rows = await sql(`
+    SELECT gloss_lower AS word, speaker_role, corpus_name,
+           target_child_id, target_child_name,
+           age::DOUBLE AS age, SUM(count)::INT AS n
+    FROM read_parquet([${files.map((f) => `'${f}'`).join(", ")}])
+    WHERE collection_name = '${fq_collection.replace(/'/g, "''")}'
+      AND gloss_lower IN (${quote_list(fq_words)})
+    GROUP BY 1, 2, 3, 4, 5, 6`);
+  return rows.map((d) => ({ ...d, age: Number(d.age), n: Number(d.n) }));
+}
+```
+
+```{ojs fq-binned}
+//| output: false
+SEP = "\u0001"
+
+// age-bin cells with fewer total tokens than this are hidden: a handful of
+// tokens in the denominator turns one word occurrence into a wild ppm spike
+fq_min_tokens = 100
+
+fq_binned = {
+  const corpus_set = new Set(fq_corpora);
+  const role_set = new Set(fq_roles);
+  const all_kids = fq_children.includes("All children");
+  const kid_set = new Set(fq_children);
+  const lo = fq_ages[0] * 12, hi = fq_ages[1] * 12;
+  const bw = fq_binwidth;
+
+  const keep = (d) =>
+    corpus_set.has(d.corpus_name) && role_set.has(d.speaker_role) &&
+    d.age != null && d.age >= lo && d.age <= hi &&
+    (all_kids || kid_set.has(d.target_child_name));
+  const bin_of = (age) => bw > 0 ? Math.floor(age / bw) * bw + bw / 2 : age;
+  const child_of = (d) => all_kids
+    ? "All children" : (d.target_child_name ?? String(d.target_child_id));
+
+  // ppm denominator: total tokens per (child facet, role, age bin)
+  const denom = new Map();
+  for (const d of fq_stats) {
+    if (!keep(d) || !(d.num_tokens > 0)) continue;
+    const k = child_of(d) + SEP + d.speaker_role + SEP + bin_of(d.age);
+    denom.set(k, (denom.get(k) ?? 0) + d.num_tokens);
+  }
+
+  // numerator: word occurrences per (word, child facet, role, age bin)
+  const num = new Map();
+  for (const d of fq_counts) {
+    if (!keep(d)) continue;
+    const k = d.word + SEP + child_of(d) + SEP + d.speaker_role + SEP + bin_of(d.age);
+    num.set(k, (num.get(k) ?? 0) + d.n);
+  }
+
+  // one row per denominator cell per word: ages where a word does not occur
+  // contribute ppm = 0 rather than being dropped
+  const out = [];
+  for (const [k, tokens] of denom) {
+    if (tokens < fq_min_tokens) continue;
+    const [child, role, bin] = k.split(SEP);
+    for (const word of fq_words) {
+      const n = num.get(word + SEP + k) ?? 0;
+      out.push({
+        word, child, speaker_role: role,
+        age_months: +bin, age_years: +bin / 12,
+        n, tokens, ppm: 1e6 * n / tokens
+      });
+    }
+  }
+  return out.sort((a, b) =>
+    d3.ascending(a.word, b.word) || d3.ascending(a.child, b.child) ||
+    d3.ascending(a.speaker_role, b.speaker_role) ||
+    d3.ascending(a.age_months, b.age_months));
+}
+
+// words with at least one occurrence under the current filters get plotted;
+// the rest are reported (a flat all-zero line is rarely what anyone wants)
+fq_found_words = [...new Set(
+  fq_binned.filter((d) => d.n > 0).map((d) => d.word))]
+fq_missing_words = fq_words.filter((w) => !fq_found_words.includes(w))
+fq_plotted = fq_binned.filter((d) => fq_found_words.includes(d.word))
+
+fq_role_dashes = new Map(
+  fq_roles.map((r, i) => [r, ["1,0", "6,4", "2,3", "8,3,2,3", "10,3"][i % 5]]))
+```
+
+```{ojs fq-plot}
+{
+  clear_loading();
+  const note = fq_missing_words.length
+    ? html`<div style="color:#8a6d3b;background:#fcf8e3;border:1px solid #faebcc;
+        border-radius:4px;padding:0.4rem 0.75rem;margin-bottom:0.5rem">
+        No occurrences of ${fq_missing_words.map((w) => `“${w}”`).join(", ")}
+        for the current selection.</div>`
+    : "";
+  if (!fq_plotted.length) {
+    return html`${note}<em>Nothing to plot — try other words, more corpora or
+      speaker roles, or a wider age range.</em>`;
+  }
+
+  const facets = [...new Set(fq_plotted.map((d) => d.child))].sort();
+  const faceted = !(facets.length === 1 && facets[0] === "All children");
+  const smooth = [];
+  for (const [key, rows] of d3.groups(fq_plotted,
+      (d) => d.word + SEP + d.speaker_role + SEP + d.child)) {
+    const [word, role, child] = key.split(SEP);
+    for (const p of loess_points(rows,
+        { x: "age_years", y: "ppm", w: "tokens", span: 1 })) {
+      smooth.push({ ...p, word, speaker_role: role, child });
+    }
+  }
+
+  const role_legend = fq_roles.length > 1
+    ? html`<div style="display:flex;gap:1rem;flex-wrap:wrap;font-size:12px;
+        color:#444;margin-bottom:0.25rem">
+        ${[...fq_role_dashes].map(([r, d]) => html`<span style="display:inline-flex;
+          align-items:center;gap:4px"><svg width="28" height="10">
+          <line x1="0" y1="5" x2="28" y2="5" stroke="#444" stroke-width="2"
+            stroke-dasharray="${d}"></line></svg>${r}</span>`)}
+      </div>`
+    : "";
+
+  const plot = Plot.plot({
+    style: { fontFamily: "var(--sans-serif)", fontSize: "13px" },
+    width: 850,
+    height: faceted ? 420 : 500,
+    inset: 8,
+    marginLeft: 70,
+    grid: true,
+    x: { label: "Target child age (years)" },
+    y: { label: "Frequency (parts per million tokens)", line: true, tickFormat: "~s" },
+    fx: faceted ? { label: null } : undefined,
+    color: { legend: true, domain: fq_found_words },
+    marks: [
+      ...fq_roles.map((role) => Plot.lineY(
+        smooth.filter((d) => d.speaker_role === role), {
+          x: "age_years", y: "ppm", stroke: "word", strokeWidth: 2.5,
+          strokeDasharray: fq_role_dashes.get(role),
+          ...(faceted ? { fx: "child" } : {})
+        })),
+      Plot.dot(fq_plotted.filter((d) => d.n > 0), {
+        x: "age_years", y: "ppm", fill: "word", r: 3, fillOpacity: 0.4,
+        channels: { speaker_role: "speaker_role", n: "n", tokens: "tokens" },
+        tip: true,
+        ...(faceted ? { fx: "child" } : {})
+      })
+    ]
+  });
+  return html`${note}${role_legend}${plot}`;
+}
+```
+
+Points show word frequency per age bin (occurrences / total tokens for that
+speaker role, × 10⁶); curves are token-weighted LOESS smooths that include
+ages where a word did not occur (frequency 0). Bins with fewer than 100
+tokens are hidden. When specific children are selected, panels show each
+child separately.
+
+## Table
+
+```{ojs fq-table}
+Inputs.table(fq_binned, { maxWidth: 900 })
+```
+
+```{ojs fq-download}
+download_csv(fq_binned,
+  `childes_frequency_${collection_slug(fq_collection)}.csv`)
+```
+
+:::
+
+::: {.callout-note}
+Counts come from the childes-db 2026.1 type-frequency table (one row per
+word type per speaker per transcript); denominators are total tokens per
+speaker per transcript from `get_speaker_statistics`, aggregated over the
+same selection. Words are matched on the NFC-normalized, lowercased gloss.
+The first query initializes an in-browser database (~10 s); later queries
+fetch only the ~2 MB shard containing each word.
+:::
+
+:::
+
+::::

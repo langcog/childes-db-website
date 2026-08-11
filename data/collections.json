@@ -1,0 +1,170 @@
+[
+ {
+  "name": "Biling",
+  "slug": "biling",
+  "n_corpora": 41,
+  "n_transcripts": 6140,
+  "n_children": 1494
+ },
+ {
+  "name": "Celtic",
+  "slug": "celtic",
+  "n_corpora": 3,
+  "n_transcripts": 171,
+  "n_children": 11
+ },
+ {
+  "name": "Chinese",
+  "slug": "chinese",
+  "n_corpora": 23,
+  "n_transcripts": 5453,
+  "n_children": 871
+ },
+ {
+  "name": "Clinical",
+  "slug": "clinical",
+  "n_corpora": 12,
+  "n_transcripts": 1015,
+  "n_children": 235
+ },
+ {
+  "name": "Clinical-Eng",
+  "slug": "clinical_eng",
+  "n_corpora": 26,
+  "n_transcripts": 3734,
+  "n_children": 651
+ },
+ {
+  "name": "Clinical-Other",
+  "slug": "clinical_other",
+  "n_corpora": 12,
+  "n_transcripts": 1135,
+  "n_children": 116
+ },
+ {
+  "name": "Dutch",
+  "slug": "dutch",
+  "n_corpora": 3,
+  "n_transcripts": 500,
+  "n_children": 20
+ },
+ {
+  "name": "DutchAfrikaans",
+  "slug": "dutchafrikaans",
+  "n_corpora": 11,
+  "n_transcripts": 1060,
+  "n_children": 190
+ },
+ {
+  "name": "EastAsian",
+  "slug": "eastasian",
+  "n_corpora": 5,
+  "n_transcripts": 1526,
+  "n_children": 59
+ },
+ {
+  "name": "Eng-AAE",
+  "slug": "eng_aae",
+  "n_corpora": 3,
+  "n_transcripts": 197,
+  "n_children": 92
+ },
+ {
+  "name": "Eng-NA",
+  "slug": "eng_na",
+  "n_corpora": 55,
+  "n_transcripts": 11201,
+  "n_children": 1198
+ },
+ {
+  "name": "Eng-UK",
+  "slug": "eng_uk",
+  "n_corpora": 13,
+  "n_transcripts": 3183,
+  "n_children": 500
+ },
+ {
+  "name": "Finno-Ugric",
+  "slug": "finno_ugric",
+  "n_corpora": 12,
+  "n_transcripts": 760,
+  "n_children": 311
+ },
+ {
+  "name": "French",
+  "slug": "french",
+  "n_corpora": 16,
+  "n_transcripts": 2403,
+  "n_children": 533
+ },
+ {
+  "name": "Frogs",
+  "slug": "frogs",
+  "n_corpora": 34,
+  "n_transcripts": 4915,
+  "n_children": 1386
+ },
+ {
+  "name": "German",
+  "slug": "german",
+  "n_corpora": 14,
+  "n_transcripts": 2559,
+  "n_children": 140
+ },
+ {
+  "name": "Japanese",
+  "slug": "japanese",
+  "n_corpora": 10,
+  "n_transcripts": 1353,
+  "n_children": 133
+ },
+ {
+  "name": "MAIN",
+  "slug": "main",
+  "n_corpora": 4,
+  "n_transcripts": 959,
+  "n_children": 20
+ },
+ {
+  "name": "Other",
+  "slug": "other",
+  "n_corpora": 30,
+  "n_transcripts": 2114,
+  "n_children": 318
+ },
+ {
+  "name": "Romance",
+  "slug": "romance",
+  "n_corpora": 22,
+  "n_transcripts": 1662,
+  "n_children": 260
+ },
+ {
+  "name": "Scandinavian",
+  "slug": "scandinavian",
+  "n_corpora": 10,
+  "n_transcripts": 678,
+  "n_children": 26
+ },
+ {
+  "name": "Slavic",
+  "slug": "slavic",
+  "n_corpora": 9,
+  "n_transcripts": 1645,
+  "n_children": 196
+ },
+ {
+  "name": "Spanish",
+  "slug": "spanish",
+  "n_corpora": 21,
+  "n_transcripts": 1820,
+  "n_children": 390
+ },
+ {
+  "name": "XLing",
+  "slug": "xling",
+  "n_corpora": 1,
+  "n_transcripts": 396,
+  "n_children": 1
+ }
+]

@@ -1,0 +1,171 @@
+---
+title: "Population Viewer"
+---
+
+How much speech does each transcript contain, and how is it distributed over
+age? Each point is one transcript (summing over the selected speaker roles),
+colored by corpus — a quick way to see what data exist for a collection.
+
+{{< include components/_load.qmd >}}
+{{< include components/_loess.qmd >}}
+{{< include components/_download.qmd >}}
+{{< include components/_style.qmd >}}
+{{< include components/_interval.qmd >}}
+
+```{ojs setup-pop}
+//| output: false
+pop_measure_options = new Map([
+  ["Utterances", "num_utterances"],
+  ["Tokens", "num_tokens"]
+])
+```
+
+:::: {.viz-layout}
+
+::: {.viz-sidebar}
+
+```{ojs inputs-pop-collection}
+viewof pop_collection = Inputs.select(collection_names, {
+  label: "Collection",
+  value: "Eng-NA"
+})
+```
+
+```{ojs pop-slice}
+//| output: false
+// lazy load: fetch only the selected collection's speaker statistics
+pop_slice = d3.json(`slices/speaker_stats/${collection_slug(pop_collection)}.json`)
+  .then(unpack)
+
+pop_corpus_options = [...new Set(
+  corpora_all
+    .filter((d) => d.collection_name === pop_collection)
+    .map((d) => d.name)
+)].sort()
+
+pop_role_options = d3.groupSort(pop_slice, (v) => -v.length, (d) => d.speaker_role)
+
+pop_default_roles = pop_role_options.includes("Target_Child")
+  ? ["Target_Child"] : pop_role_options.slice(0, 1)
+```
+
+```{ojs inputs-pop-rest}
+viewof pop_corpora = Inputs.select(pop_corpus_options, {
+  label: "Corpora",
+  multiple: 8,
+  value: pop_corpus_options
+})
+viewof pop_roles = Inputs.select(pop_role_options, {
+  label: "Speaker roles",
+  multiple: 6,
+  value: pop_default_roles
+})
+viewof pop_measure = Inputs.select(pop_measure_options, { label: "Measure" })
+viewof pop_ages = interval([0, 18], { step: 0.5, value: [0, 18], label: "Ages (years)" })
+```
+
+:::
+
+::: {.viz-main}
+
+{{< include components/_spinner.qmd >}}
+
+::: {.panel-tabset}
+
+## Plot
+
+```{ojs pop-data}
+//| output: false
+// one row per transcript: measure summed across the selected speaker roles
+pop_rows = {
+  const corpus_set = new Set(pop_corpora);
+  const role_set = new Set(pop_roles);
+  const lo = pop_ages[0] * 12;
+  const hi = pop_ages[1] * 12;
+  const kept = pop_slice.filter((d) =>
+    corpus_set.has(d.corpus_name) &&
+    role_set.has(d.speaker_role) &&
+    d.age != null && d.age >= lo && d.age <= hi);
+  return d3.groups(kept, (d) => d.transcript_id)
+    .map(([id, cell]) => ({
+      transcript_id: id,
+      corpus_name: cell[0].corpus_name,
+      target_child_id: cell[0].target_child_id,
+      target_child_name: cell[0].target_child_name,
+      target_child_sex: cell[0].target_child_sex,
+      age: cell[0].age,
+      value: d3.sum(cell, (d) => d[pop_measure])
+    }))
+    .sort((a, b) =>
+      d3.ascending(a.corpus_name, b.corpus_name) || d3.ascending(a.age, b.age));
+}
+
+pop_plot_corpora = [...new Set(pop_rows.map((d) => d.corpus_name))].sort()
+```
+
+```{ojs pop-plot}
+{
+  clear_loading();
+  if (!pop_rows.length) {
+    return html`<em>No data for this selection — try widening the age range
+      or adding corpora / speaker roles.</em>`;
+  }
+  const smooth = loess_points(pop_rows, { x: "age", y: "value" });
+  return Plot.plot({
+    style: { fontFamily: "var(--sans-serif)", fontSize: "13px" },
+    width: 850,
+    height: 500,
+    inset: 8,
+    grid: true,
+    x: { label: "Target child age (months)", tickFormat: "d", line: true },
+    y: { label: `${measure_name(pop_measure)} per transcript`, line: true },
+    color: {
+      // a legend for a handful of corpora; tooltips carry the corpus otherwise
+      legend: pop_plot_corpora.length <= 12,
+      domain: pop_plot_corpora
+    },
+    marks: [
+      Plot.dot(pop_rows, {
+        x: "age", y: "value", fill: "corpus_name", r: 2.5, fillOpacity: 0.5,
+        channels: {
+          corpus: "corpus_name",
+          child: (d) => d.target_child_name ?? String(d.target_child_id)
+        },
+        tip: true
+      }),
+      Plot.lineY(smooth, { x: "age", y: "value", stroke: "#333", strokeWidth: 2.5 })
+    ]
+  });
+}
+```
+
+```{ojs pop-measure-name}
+//| output: false
+measure_name = (key) =>
+  [...pop_measure_options].find(([, v]) => v === key)?.[0] ?? key
+```
+
+The black curve is an (unweighted) LOESS smooth over all plotted transcripts.
+
+## Table
+
+```{ojs pop-table}
+Inputs.table(pop_rows, { maxWidth: 900 })
+```
+
+```{ojs pop-download}
+download_csv(pop_rows,
+  `childes_population_${collection_slug(pop_collection)}_${pop_measure}.csv`)
+```
+
+:::
+
+::: {.callout-note}
+Counts come from the `transcript_by_speaker` table of childes-db 2026.1.
+Transcripts without a recorded target-child age are not shown. Ages are
+converted from days to months as in `childesr`.
+:::
+
+:::
+
+::::
