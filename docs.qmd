@@ -75,6 +75,23 @@ unaffected: MLU-w was validated against 2021.1 at r ≈ 0.999 on matched
 transcripts.
 :::
 
+::: {.callout-warning}
+## Chinese corpora: `stem` and `part_of_speech` changed meaning in 2026.1
+
+The same May 2026 Batchalign re-annotation *replaced* the hand-curated Chinese
+MOR tier. In releases through 2021.1, `stem` held pinyin with tone numbers
+(`现在 → xian4zai4`) and `part_of_speech` used the fine Chinese tag set
+(`cl`, `sfp`, `asp`, `v:dirc`, …). In 2026.1 the stem is the characters
+themselves and tags follow UD (the classifier 个, formerly `cl`, is now
+`noun`); no pinyin tier exists in the 2026 source files. About 8% of
+utterances in some Mandarin corpora received no `%mor` at all and have empty
+`stem`/`part_of_speech`. The 2026.1 **Xinjiang** corpus is a different
+dataset from its 2021.1 namesake (unchecked ASR output with anonymous
+speaker codes and no morphology). For analyses that need the curated Chinese
+annotation, pin `db_version = "2021.1"`, which remains available. Details:
+[childes-db#72](https://github.com/langcog/childes-db/issues/72).
+:::
+
 ### Legacy pipeline (releases through 2021.1)
 
 Releases up to and including 2021.1 used a different pipeline: CHAT files were
